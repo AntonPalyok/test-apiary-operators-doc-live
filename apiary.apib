@@ -1,80 +1,229 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://sandbox-api.mylimobiz.com/
 
 # Operator API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+## Overview
 
-## Questions Collection [/questions]
+The Operator API allows custom applications to interact programmatically with Limo Anywhere. Using the Operator API you interact with resources allowing for actions such as:
 
-### List All Questions [GET]
+- Operator Sign Up.
+- Rate Lookup & Calculation.
+- Reservation Creation/Modification/Cancellation.
 
-+ Response 200 (application/json)
+The API accepts/returns JSON data and attempts to conform to the <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> design principles. You can interact with the resources exposed via the API by accessing resource collections and element URIs by using the HTTP verbs (GET, POST, PUT, and DELETE). 
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+## General Requirements
 
-### Create a New Question [POST]
+To use the Limo Anywhere Operator API  in your application, you must have an API authentication token from the token service. See the <a href="#reference/authentication">Authentication documentation</a> for the authorization guide.
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+<b>Before you can generate an access token, you must agree to the API Terms of Service and receive a Client ID and Client Secret from Limo Anywhere.</b> 
 
-+ Request (application/json)
+If you have not done this and would like to use the API, please email api@limoanywhere.com
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+## HTTP Status Codes
 
-+ Response 201 (application/json)
+| Status Code | Label | Returned After|
+|--------------------------|---------------------------|--------------------------------------------------------------------------------|
+|200 | OK.| Operation worked as expected. |
+|201 | Created. | Successful POST where a resource was created. |
+|202 | Accepted. |Successful operation. |
+|204 | No Content. | GET request where content doesn't exist. |
+|400 | Bad request. | |
+|401 | Unauthorized. | Request when API client credentials or operator credentials have not been validated. |
+|403 | Forbidden. | Unauthorized requests such as improper OAuth 2.0 scopes or permissions issues. |
+|404 | Not Found. |  Requested resource was not found. |
+|409 | Conflict. | A conflict exists and needs to be resolved before the request can be made. |
+|429 | Too Many Requests. | Rate limit has been reached. |
+|500 | Internal Server Error. |  |
 
+## Getting Started
+
+Follow the below steps to complete some of the most popular actions.
+
+<b> Get Authorization to use the Operator API before doing anything else.</b>
+
+1. Contact api@limoanywhere.com and receive your Client Id & Client Secret.
+2. Use Client Id & Client Secret to generate an access token as described <a href="/#reference/authentication">here.</a>
+
+Once you have completed the above, choose a sub-section to follow:
+
+<b> Create a Booking</b>
+
+1. Call the <a href="/#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method to get the pricing for your trip requirements. Choose the optimal pricing and hold the `Id` of this rate from the `results` array.
+2. Use the <a href="/#reference/booking/booking/booking">Booking</a> method. In `search_result_id` parameter set the rate Id of the desired rate and provide additional necessary information: payment, passengers, optional rates etc.
+
+<b> Create a Quote</b>
+
+1. Call the <a href="/#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method to get the pricing for your trip requirements. Choose the optimal pricing and hold the `Id` of this rate from the `results` array.
+2. Use the <a href="/#reference/booking/rate-lookup/create-quote">Create Quote</a> method. In the `search_result_id` parameter, use the search result Id from the <a href="#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method and provide additional necessary information (same as the <a href="#reference/booking/booking/booking">Booking</a> process)
+
+
+
+
+
+
+
+
+## Group Authentication
+The API uses the <a href="https://tools.ietf.org/html/rfc6749"> OAuth 2.0 </a> protocol for simple, but effective authentication and authorization.
+All API endpoints require an OAuth access token, thus we have exposed a service that will provide the user with an OAuth 2 Access token.
+This token should be provided in the header in all requests.
+
+
+
+
+## GET Access Token [/get]
+
+We support 2 ways of obtaining authorization:
+
+- <b>Client Credentials Grant: </b>Authenticates as a general client. Allows access to general resources that do not need operator account authentication.
+- <b>Resource Owner Credentials Grant: </b>Authenticates as a specific operator account. Allows access to operator account resources and general resources.
+
+### Basic Steps for getting an 'access_token':
+
+1. Choose one of the suitable methods of obtaining Authorization described above (Client or Resource Owner.)
+2. Create the appropriate request. Parameter `grant_type` will depend on Authorization method:
+
+
+### Client Credentials Grant [POST /oauth2/token]
+`grant_type` = `client_credentials`
+
++ Request
+
+    + `grant_type` (string) Required. String length: inclusive between 0 and 50.f
+    + `client_id` (string) Required. String length: inclusive between 6 and 50.
+    + `client_secret` (string) Required. String length: inclusive between 50 and 50.
+ 
     + Headers
 
-            Location: /questions/2
+            Content-Type: application/json
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "grant_type": "client_credentials",
+                "client_id": "la_operator_test",
+                "client_secret": "lcfLYzj7RaUgmRp8sVngt2fpD5GaBJ19Ptt2MrNSlF57GI5kAR",
             }
+
++ Response 200 (application/json)
+    
+    + Body
+
+            {
+                "access_token": "YE0W7CSdfVaQFmC8GTQ1",
+                "token_type": "bearer",
+                "expires_in": 3600,
+            }
+
+### Resource Owner Credentials Grant [POST /oauth2/token]
+`grant_type` = `password`
+
++ Request
+
+    + `grant_type` (string) Required. String length: inclusive between 0 and 50.
+    + `client_id` (string) Required. String length: inclusive between 6 and 50.
+    + `client_secret` (string) Required. String length: inclusive between 50 and 50.
+    + `company_alias` (string) String length: inclusive between 0 and 50.
+    + `username` (string) String length: inclusive between 0 and 50.
+    + `password` (string) String length: inclusive between 0 and 50.
+ 
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "grant_type": "password",
+                "client_id": "la_operator_test",
+                "client_secret": "lcfLYzj7RaUgmRp8sVngt2fpD5GaBJ19Ptt2MrNSlF57GI5kAR",
+                "company_alias": "test_alias",
+                "username": "passenger@test.com",
+                "password": "password"
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+
+            {
+                "access_token": "YE0W7CSdfVaQFmC8GTQ1",
+                "refresh_token": "yuMF7U7FHMCL2cuI5qKV",
+                "token_type": "bearer",
+                "expires_in": 3600
+            }
+
+
+## Refresh Access Token [/refresh]
+Your access token will expire after a period of time and must be refreshed. Time until token expiration is provided in the `expired_in` parameter when receiving your token. <b>If you receive a 401 error, you may need to refresh your token.</b>
+
+
+### Refresh [POST /oauth2/token]
+
++ Request
+
+    + `grant_type` (string) Required. String length: inclusive between 0 and 50.
+    + `refresh_token` (string) Required. String length: 20.
+    + `client_id` (string) Required. String length: inclusive between 6 and 50.
+    + `client_secret` (string) Required. String length: inclusive between 50 and 50.
+ 
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "grant_type": "refresh_token",
+                "refresh_token": "CSYE0W7dfVaQFmC8GTQPL",
+                "client_id": "la_operator_test",
+                "client_secret": "lcfLYzj7RaUgmRp8sVngt2fpD5GaBJ19Ptt2MrNSlF57GI5kAR"
+            }
+
++ Response 200 (application/json)
+    
+    + Body
+
+            {
+                "access_token": "YE0W7CSdfVaQFmC8GTQ1",
+                "token_type": "bearer",
+                "expires_in": 3600
+            }
+
+
+The tables below describe all possible request/response parameters:
+
+#####Request:
+
+| Parameter | Description |
+|------------------|-------------------------------------------------------------------------------------------------------------------------|
+| grant_type | Type of Grant described above. Possible values: `client_credentials`, `authorization_code`, `password`, `refresh_token` |
+| client_id | The client ID of your application |
+| client_secret | The client Secret of your application |
+| company_alias | The Alias of you company |
+| username | Username or Email |
+| passwod | Password |
+
+#####Response:
+
+| Parameter | Description |
+|------------------|------------------------------------------------------------|
+| access_token | Access Token |
+| token_type | Token type (Always `bearer`) |
+| expires_in | Expiration time of Access token (in seconds) |
+| refresh_token | Refresh Token |
+
+
+### Possible Authentication Errors
+
+| Parameter | Description |
+|-------------------------------|---------------------------------------------------------------|
+| invalid_request | Required parameters were not provided |
+| invalid_client | The Сlient ID or Clernt secret provided is invalid |
+| invalid_scope (not used now) | The scope parameter provided is not a valid subset of scopes |
+| unsupported_grant_type | Unsupported Grand Type provided |
+
+
+In 'execution' console you can see request/response samples, data types and sizes of parameters
