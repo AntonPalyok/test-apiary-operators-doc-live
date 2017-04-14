@@ -227,3 +227,1335 @@ The tables below describe all possible request/response parameters:
 
 
 In 'execution' console you can see request/response samples, data types and sizes of parameters
+
+
+
+## Group Reservations
+
+### Get Reservation [GET /companies/{company_alias}/reservations/{id}] 
+
++ Parameters 
+    + id: `1` (required, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 57414239,
+  "state": "unassigned",
+  "state_reason": "undefined",
+  "status_id": 118728,
+  "status": {
+    "name": "Unassigned",
+    "color": "#FFFFCC"
+  },
+  "created_at": "2017-04-14T18:25:09",
+  "created_by": "admin",
+  "vehicle_type": {
+    "name": "BMW"
+  },
+  "service_type": {
+    "name": "Airport Departure"
+  },
+  "payment_card": {
+    "holder_type": "unknown",
+    "card_number_first_digit": "5",
+    "card_number_last_digits": "1462",
+    "card_network": "master_card",
+    "expiration_year": 2020,
+    "expiration_month": 11
+  },
+  "payment_type": {
+    "name": "Credit Card",
+    "method": "other"
+  },
+  "primary_agent": {},
+  "secondary_agent": {},
+  "rental_agreement": {
+    "name": "Rental 1"
+  },
+  "primary_driver": {
+    "first_name": "Cleder",
+    "last_name": "Cueto"
+  },
+  "secondary_driver": {
+    "first_name": "Richard",
+    "last_name": "Goodwin"
+  },
+  "primary_car": {
+    "license_plate": "LAL 44",
+    "car_maker": "Lincoln",
+    "color": "BLACK"
+  },
+  "secondary_car": {
+    "license_plate": "LAL 11",
+    "car_maker": "Cadillac",
+    "color": "BLACK"
+  },
+  "preferred_vehicle_type": {
+    "name": "Tesla Model S"
+  },
+  "preferred_primary_driver": {
+    "first_name": "Alvin",
+    "last_name": "Swanson",
+    "phone": "+18008679878"
+  },
+  "preferred_secondary_driver": {
+    "first_name": "Vernon",
+    "last_name": "Poovey"
+  },
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "payment_terms": "due_upon_receipt",
+  "payment_status": "unpaid",
+  "luggage_count": 1,
+  "passenger_count": 1,
+  "infant_child_seat_count": 2,
+  "booster_child_seat_count": 1,
+  "toddler_child_seat_count": 1,
+  "is_handicap_access_required": true,
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "stops": [
+    {
+      "name": "Amtrak: Back Bay Station",
+      "action": "stop",
+      "address": {
+        "country_code": "US",
+        "state_code": "MA",
+        "postal_code": "02116",
+        "city": "Boston",
+        "address_line1": "145 Dartmouth St"
+      },
+      "latitude": 42.34734,
+      "longitude": -71.075386
+    }
+  ],
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "booking_contact_account_id": 1003427363,
+  "booking_contact": {
+    "first_name": "David",
+    "last_name": "Stewart",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "billing_contact_account_id": 1001351994,
+  "billing_contact": {
+    "first_name": "Jerry",
+    "last_name": "Harris"
+  },
+  "passengers": [
+    {
+      "passenger_account_id": 1002334155,
+      "passenger": {
+        "first_name": "Christina",
+        "last_name": "Brady",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      }
+    }
+  ],
+  "vehicle_type_id": 14421,
+  "service_type_id": 88301,
+  "payment_card_id": 7019493,
+  "payment_type_id": 1,
+  "paid_amount": 0.0,
+  "authorized_amount": 0.0,
+  "total_amount": 196.89,
+  "primary_agent_id": 2,
+  "primary_agent_reward": {
+    "type": "amout",
+    "amount": 20.0
+  },
+  "secondary_agent_id": 35,
+  "secondary_agent_reward": {
+    "type": "percentage",
+    "amount": 3.0
+  },
+  "rental_agreement_id": 16493,
+  "primary_driver_id": 138,
+  "secondary_driver_id": 158,
+  "primary_car_id": 75,
+  "secondary_car_id": 73,
+  "charges": [
+    {
+      "rate_id": 2,
+      "name": "Per Hour",
+      "rate_type": "multiplier",
+      "rate_group": "base_rate",
+      "is_vat_tax": false,
+      "is_primary": true,
+      "unit_value": 15.0,
+      "unit_count": 1.0,
+      "total_value": 15.0
+    }
+  ],
+  "preferred_vehicle_type_id": 49328,
+  "preferred_primary_driver_id": 154,
+  "preferred_secondary_driver_id": 153,
+  "miscellaneous": {
+    "is_greeting_sign_required": true,
+    "greeting_sign_notes": "Greeting notes",
+    "occasion": "Corporate Travel",
+    "group_name": "Amabella",
+    "referral_source": "Website",
+    "arranged_by": "INET",
+    "reference_number": "12345",
+    "voucher_number": "7789652"
+  },
+  "confirmation_on_create": "email",
+  "confirmation_on_update": "email"
+}
+
+
+
+### Create Reservation [POST /companies/{company_alias}/reservations] 
+
++ Parameters 
+    + company_alias: (required, string)
+
++ Request 
+
+    + `confirmation_prefix` (string) String length: inclusive between 0 and 20. 
+    + `confirmation_number` (string) String length: inclusive between 0 and 50. 
+    + `confirmation_suffix` (string) String length: inclusive between 0 and 20. 
+    + `scheduled_pickup_at` (object) 
+    + `actual_pickup_at` (object) 
+    + `scheduled_dropoff_at` (object) 
+    + `payment_terms` (object) 
+    + `payment_status` (object) 
+    + `luggage_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `passenger_count` (int) Range: inclusive between 1 and 2147483647. 
+    + `infant_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `booster_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `toddler_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `is_handicap_access_required` (boolean) 
+    + `pickup` (object) Required. 
+    + `pickup.name` (string) String length: inclusive between 0 and 500. 
+    + `pickup.scheduled_arrival_at` (object) 
+    + `pickup.actual_arrival_at` (object) 
+    + `pickup.action` (object) 
+    + `pickup.notes` (string) String length: inclusive between 0 and 4000. 
+    + `pickup.one_line_address` (string) 
+    + `pickup.address` (object) 
+    + `pickup.address.country_code` (string) String length: inclusive between 0 and 5. 
+    + `pickup.address.state_code` (string) String length: inclusive between 0 and 5. 
+    + `pickup.address.postal_code` (string) String length: inclusive between 0 and 15. 
+    + `pickup.address.county` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.city` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.address_line1` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.address_line2` (string) String length: inclusive between 0 and 250. 
+    + `flight` (object) 
+    + `flight.airport_code` (string) Max length: 3. Min length: 3. 
+    + `flight.airline_code` (string) Max length: 2. Min length: 2. 
+    + `flight.flight_number` (string) Max length: 4. Min length: 1. 
+    + `flight.tail_number` (string) String length: inclusive between 0 and 10. 
+    + `flight.terminal` (string) String length: inclusive between 0 and 50. 
+    + `flight.gateway` (string) String length: inclusive between 0 and 50. 
+    + `flight.meet_option` (object) 
+    + `flight.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `flight.departure_at_or_arrival_at` (object) 
+    + `cruise` (object) 
+    + `cruise.seaport_code` (string) Required. String length: inclusive between 0 and 10. 
+    + `cruise.cruise_ship_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_at_or_arrival_at` (object) 
+    + `latitude` (float) 
+    + `longitude` (float) 
+    + `stops` (object) Required. 
+    + `dropoff` (object) 
+    + `dropoff.name` (string) String length: inclusive between 0 and 500. 
+    + `dropoff.scheduled_arrival_at` (object) 
+    + `dropoff.actual_arrival_at` (object) 
+    + `dropoff.action` (object) 
+    + `dropoff.notes` (string) String length: inclusive between 0 and 4000. 
+    + `dropoff.one_line_address` (string) 
+    + `dropoff.address` (object) 
+    + `dropoff.address.country_code` (string) String length: inclusive between 0 and 5. 
+    + `dropoff.address.state_code` (string) String length: inclusive between 0 and 5. 
+    + `dropoff.address.postal_code` (string) String length: inclusive between 0 and 15. 
+    + `dropoff.address.county` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.city` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.address_line1` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.address_line2` (string) String length: inclusive between 0 and 250. 
+    + `flight` (object) 
+    + `flight.airport_code` (string) Max length: 3. Min length: 3. 
+    + `flight.airline_code` (string) Max length: 2. Min length: 2. 
+    + `flight.flight_number` (string) Max length: 4. Min length: 1. 
+    + `flight.tail_number` (string) String length: inclusive between 0 and 10. 
+    + `flight.terminal` (string) String length: inclusive between 0 and 50. 
+    + `flight.gateway` (string) String length: inclusive between 0 and 50. 
+    + `flight.meet_option` (object) 
+    + `flight.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `flight.departure_at_or_arrival_at` (object) 
+    + `cruise` (object) 
+    + `cruise.seaport_code` (string) Required. String length: inclusive between 0 and 10. 
+    + `cruise.cruise_ship_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_at_or_arrival_at` (object) 
+    + `latitude` (float) 
+    + `longitude` (float) 
+    + `booking_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `booking_contact` (object) 
+    + `booking_contact.first_name` (string) String length: inclusive between 0 and 50. 
+    + `booking_contact.last_name` (string) String length: inclusive between 0 and 50. 
+    + `booking_contact.email` (string) Email address. String length: inclusive between 0 and 255. 
+    + `booking_contact.phone` (string) Phone number. String length: inclusive between 0 and 50. 
+    + `billing_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `billing_contact` (object) 
+    + `billing_contact.first_name` (string) String length: inclusive between 0 and 50. 
+    + `billing_contact.last_name` (string) String length: inclusive between 0 and 50. 
+    + `billing_contact.email` (string) Email address. String length: inclusive between 0 and 255. 
+    + `billing_contact.phone` (string) Phone number. String length: inclusive between 0 and 50. 
+    + `passengers` (object) 
+    + `vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `service_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `payment_card_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `payment_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `paid_amount` (object) Non-negative. 
+    + `authorized_amount` (object) Non-negative. 
+    + `total_amount` (object) Non-negative. 
+    + `primary_agent_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_agent_reward` (object) 
+    + `primary_agent_reward.type` (object) 
+    + `primary_agent_reward.amount` (object) Non-negative. 
+    + `secondary_agent_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_agent_reward` (object) 
+    + `secondary_agent_reward.type` (object) 
+    + `secondary_agent_reward.amount` (object) Non-negative. 
+    + `rental_agreement_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_car_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_car_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `charges` (object) Required. 
+    + `preferred_vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `preferred_primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `preferred_secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `miscellaneous` (object) 
+    + `miscellaneous.is_greeting_sign_required` (boolean) 
+    + `miscellaneous.greeting_sign_notes` (string) String length: inclusive between 0 and 2000. 
+    + `miscellaneous.occasion` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.group_name` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.referral_source` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.arranged_by` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.reference_number` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.voucher_number` (string) String length: inclusive between 0 and 50. 
+    + `confirmation_on_create` (object) 
+    + `confirmation_on_update` (object) 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token} 
+
+    + Body 
+
+{
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "payment_terms": "due_upon_receipt",
+  "payment_status": "unpaid",
+  "luggage_count": 1,
+  "passenger_count": 1,
+  "infant_child_seat_count": 2,
+  "booster_child_seat_count": 1,
+  "toddler_child_seat_count": 1,
+  "is_handicap_access_required": true,
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "stops": [
+    {
+      "name": "Amtrak: Back Bay Station",
+      "action": "stop",
+      "address": {
+        "country_code": "US",
+        "state_code": "MA",
+        "postal_code": "02116",
+        "city": "Boston",
+        "address_line1": "145 Dartmouth St"
+      },
+      "latitude": 42.34734,
+      "longitude": -71.075386
+    }
+  ],
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "booking_contact_account_id": 1003427363,
+  "booking_contact": {
+    "first_name": "David",
+    "last_name": "Stewart",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "billing_contact_account_id": 1001351994,
+  "billing_contact": {
+    "first_name": "Jerry",
+    "last_name": "Harris"
+  },
+  "passengers": [
+    {
+      "passenger_account_id": 1002334155,
+      "passenger": {
+        "first_name": "Christina",
+        "last_name": "Brady",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      }
+    }
+  ],
+  "vehicle_type_id": 14421,
+  "service_type_id": 88301,
+  "payment_card_id": 7019493,
+  "payment_type_id": 1,
+  "paid_amount": 0.0,
+  "authorized_amount": 0.0,
+  "total_amount": 196.89,
+  "primary_agent_id": 2,
+  "primary_agent_reward": {
+    "type": "amout",
+    "amount": 20.0
+  },
+  "secondary_agent_id": 35,
+  "secondary_agent_reward": {
+    "type": "percentage",
+    "amount": 3.0
+  },
+  "rental_agreement_id": 16493,
+  "primary_driver_id": 138,
+  "secondary_driver_id": 158,
+  "primary_car_id": 75,
+  "secondary_car_id": 73,
+  "charges": [
+    {
+      "rate_id": 2,
+      "name": "Per Hour",
+      "rate_type": "multiplier",
+      "rate_group": "base_rate",
+      "is_vat_tax": false,
+      "is_primary": true,
+      "unit_value": 15.0,
+      "unit_count": 1.0,
+      "total_value": 15.0
+    }
+  ],
+  "preferred_vehicle_type_id": 49328,
+  "preferred_primary_driver_id": 154,
+  "preferred_secondary_driver_id": 153,
+  "miscellaneous": {
+    "is_greeting_sign_required": true,
+    "greeting_sign_notes": "Greeting notes",
+    "occasion": "Corporate Travel",
+    "group_name": "Amabella",
+    "referral_source": "Website",
+    "arranged_by": "INET",
+    "reference_number": "12345",
+    "voucher_number": "7789652"
+  },
+  "confirmation_on_create": "email",
+  "confirmation_on_update": "email"
+}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 57414239,
+  "state": "unassigned",
+  "state_reason": "undefined",
+  "status_id": 118728,
+  "status": {
+    "name": "Unassigned",
+    "color": "#FFFFCC"
+  },
+  "created_at": "2017-04-14T18:25:09",
+  "created_by": "admin",
+  "vehicle_type": {
+    "name": "BMW"
+  },
+  "service_type": {
+    "name": "Airport Departure"
+  },
+  "payment_card": {
+    "holder_type": "unknown",
+    "card_number_first_digit": "5",
+    "card_number_last_digits": "1462",
+    "card_network": "master_card",
+    "expiration_year": 2020,
+    "expiration_month": 11
+  },
+  "payment_type": {
+    "name": "Credit Card",
+    "method": "other"
+  },
+  "primary_agent": {},
+  "secondary_agent": {},
+  "rental_agreement": {
+    "name": "Rental 1"
+  },
+  "primary_driver": {
+    "first_name": "Cleder",
+    "last_name": "Cueto"
+  },
+  "secondary_driver": {
+    "first_name": "Richard",
+    "last_name": "Goodwin"
+  },
+  "primary_car": {
+    "license_plate": "LAL 44",
+    "car_maker": "Lincoln",
+    "color": "BLACK"
+  },
+  "secondary_car": {
+    "license_plate": "LAL 11",
+    "car_maker": "Cadillac",
+    "color": "BLACK"
+  },
+  "preferred_vehicle_type": {
+    "name": "Tesla Model S"
+  },
+  "preferred_primary_driver": {
+    "first_name": "Alvin",
+    "last_name": "Swanson",
+    "phone": "+18008679878"
+  },
+  "preferred_secondary_driver": {
+    "first_name": "Vernon",
+    "last_name": "Poovey"
+  },
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "payment_terms": "due_upon_receipt",
+  "payment_status": "unpaid",
+  "luggage_count": 1,
+  "passenger_count": 1,
+  "infant_child_seat_count": 2,
+  "booster_child_seat_count": 1,
+  "toddler_child_seat_count": 1,
+  "is_handicap_access_required": true,
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "stops": [
+    {
+      "name": "Amtrak: Back Bay Station",
+      "action": "stop",
+      "address": {
+        "country_code": "US",
+        "state_code": "MA",
+        "postal_code": "02116",
+        "city": "Boston",
+        "address_line1": "145 Dartmouth St"
+      },
+      "latitude": 42.34734,
+      "longitude": -71.075386
+    }
+  ],
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "booking_contact_account_id": 1003427363,
+  "booking_contact": {
+    "first_name": "David",
+    "last_name": "Stewart",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "billing_contact_account_id": 1001351994,
+  "billing_contact": {
+    "first_name": "Jerry",
+    "last_name": "Harris"
+  },
+  "passengers": [
+    {
+      "passenger_account_id": 1002334155,
+      "passenger": {
+        "first_name": "Christina",
+        "last_name": "Brady",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      }
+    }
+  ],
+  "vehicle_type_id": 14421,
+  "service_type_id": 88301,
+  "payment_card_id": 7019493,
+  "payment_type_id": 1,
+  "paid_amount": 0.0,
+  "authorized_amount": 0.0,
+  "total_amount": 196.89,
+  "primary_agent_id": 2,
+  "primary_agent_reward": {
+    "type": "amout",
+    "amount": 20.0
+  },
+  "secondary_agent_id": 35,
+  "secondary_agent_reward": {
+    "type": "percentage",
+    "amount": 3.0
+  },
+  "rental_agreement_id": 16493,
+  "primary_driver_id": 138,
+  "secondary_driver_id": 158,
+  "primary_car_id": 75,
+  "secondary_car_id": 73,
+  "charges": [
+    {
+      "rate_id": 2,
+      "name": "Per Hour",
+      "rate_type": "multiplier",
+      "rate_group": "base_rate",
+      "is_vat_tax": false,
+      "is_primary": true,
+      "unit_value": 15.0,
+      "unit_count": 1.0,
+      "total_value": 15.0
+    }
+  ],
+  "preferred_vehicle_type_id": 49328,
+  "preferred_primary_driver_id": 154,
+  "preferred_secondary_driver_id": 153,
+  "miscellaneous": {
+    "is_greeting_sign_required": true,
+    "greeting_sign_notes": "Greeting notes",
+    "occasion": "Corporate Travel",
+    "group_name": "Amabella",
+    "referral_source": "Website",
+    "arranged_by": "INET",
+    "reference_number": "12345",
+    "voucher_number": "7789652"
+  },
+  "confirmation_on_create": "email",
+  "confirmation_on_update": "email"
+}
+
+
+
+### Update Reservation [PUT /companies/{company_alias}/reservations/{id}] 
+
++ Parameters 
+    + id: `1` (required, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + `confirmation_prefix` (string) String length: inclusive between 0 and 20. 
+    + `confirmation_number` (string) String length: inclusive between 0 and 50. 
+    + `confirmation_suffix` (string) String length: inclusive between 0 and 20. 
+    + `scheduled_pickup_at` (object) 
+    + `scheduled_dropoff_at` (object) 
+    + `actual_dropoff_at` (object) 
+    + `payment_terms` (object) 
+    + `payment_status` (object) 
+    + `luggage_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `passenger_count` (int) Range: inclusive between 1 and 2147483647. 
+    + `infant_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `booster_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `toddler_child_seat_count` (int) Range: inclusive between 0 and 2147483647. 
+    + `is_handicap_access_required` (boolean) 
+    + `pickup` (object) Required. 
+    + `pickup.name` (string) String length: inclusive between 0 and 500. 
+    + `pickup.scheduled_arrival_at` (object) 
+    + `pickup.actual_arrival_at` (object) 
+    + `pickup.action` (object) 
+    + `pickup.notes` (string) String length: inclusive between 0 and 4000. 
+    + `pickup.one_line_address` (string) 
+    + `pickup.address` (object) 
+    + `pickup.address.country_code` (string) String length: inclusive between 0 and 5. 
+    + `pickup.address.state_code` (string) String length: inclusive between 0 and 5. 
+    + `pickup.address.postal_code` (string) String length: inclusive between 0 and 15. 
+    + `pickup.address.county` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.city` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.address_line1` (string) String length: inclusive between 0 and 250. 
+    + `pickup.address.address_line2` (string) String length: inclusive between 0 and 250. 
+    + `flight` (object) 
+    + `flight.airport_code` (string) Max length: 3. Min length: 3. 
+    + `flight.airline_code` (string) Max length: 2. Min length: 2. 
+    + `flight.flight_number` (string) Max length: 4. Min length: 1. 
+    + `flight.tail_number` (string) String length: inclusive between 0 and 10. 
+    + `flight.terminal` (string) String length: inclusive between 0 and 50. 
+    + `flight.gateway` (string) String length: inclusive between 0 and 50. 
+    + `flight.meet_option` (object) 
+    + `flight.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `flight.departure_at_or_arrival_at` (object) 
+    + `cruise` (object) 
+    + `cruise.seaport_code` (string) Required. String length: inclusive between 0 and 10. 
+    + `cruise.cruise_ship_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_at_or_arrival_at` (object) 
+    + `latitude` (float) 
+    + `longitude` (float) 
+    + `stops` (object) Required. 
+    + `dropoff` (object) 
+    + `dropoff.name` (string) String length: inclusive between 0 and 500. 
+    + `dropoff.scheduled_arrival_at` (object) 
+    + `dropoff.actual_arrival_at` (object) 
+    + `dropoff.action` (object) 
+    + `dropoff.notes` (string) String length: inclusive between 0 and 4000. 
+    + `dropoff.one_line_address` (string) 
+    + `dropoff.address` (object) 
+    + `dropoff.address.country_code` (string) String length: inclusive between 0 and 5. 
+    + `dropoff.address.state_code` (string) String length: inclusive between 0 and 5. 
+    + `dropoff.address.postal_code` (string) String length: inclusive between 0 and 15. 
+    + `dropoff.address.county` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.city` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.address_line1` (string) String length: inclusive between 0 and 250. 
+    + `dropoff.address.address_line2` (string) String length: inclusive between 0 and 250. 
+    + `flight` (object) 
+    + `flight.airport_code` (string) Max length: 3. Min length: 3. 
+    + `flight.airline_code` (string) Max length: 2. Min length: 2. 
+    + `flight.flight_number` (string) Max length: 4. Min length: 1. 
+    + `flight.tail_number` (string) String length: inclusive between 0 and 10. 
+    + `flight.terminal` (string) String length: inclusive between 0 and 50. 
+    + `flight.gateway` (string) String length: inclusive between 0 and 50. 
+    + `flight.meet_option` (object) 
+    + `flight.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `flight.departure_at_or_arrival_at` (object) 
+    + `cruise` (object) 
+    + `cruise.seaport_code` (string) Required. String length: inclusive between 0 and 10. 
+    + `cruise.cruise_ship_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
+    + `cruise.departure_at_or_arrival_at` (object) 
+    + `latitude` (float) 
+    + `longitude` (float) 
+    + `booking_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `booking_contact` (object) 
+    + `booking_contact.first_name` (string) String length: inclusive between 0 and 50. 
+    + `booking_contact.last_name` (string) String length: inclusive between 0 and 50. 
+    + `booking_contact.email` (string) Email address. String length: inclusive between 0 and 255. 
+    + `booking_contact.phone` (string) Phone number. String length: inclusive between 0 and 50. 
+    + `billing_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `billing_contact` (object) 
+    + `billing_contact.first_name` (string) String length: inclusive between 0 and 50. 
+    + `billing_contact.last_name` (string) String length: inclusive between 0 and 50. 
+    + `billing_contact.email` (string) Email address. String length: inclusive between 0 and 255. 
+    + `billing_contact.phone` (string) Phone number. String length: inclusive between 0 and 50. 
+    + `passengers` (object) 
+    + `vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `service_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `payment_card_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `payment_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `paid_amount` (object) Non-negative. 
+    + `authorized_amount` (object) Non-negative. 
+    + `total_amount` (object) Non-negative. 
+    + `primary_agent_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_agent_reward` (object) 
+    + `primary_agent_reward.type` (object) 
+    + `primary_agent_reward.amount` (object) Non-negative. 
+    + `secondary_agent_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_agent_reward` (object) 
+    + `secondary_agent_reward.type` (object) 
+    + `secondary_agent_reward.amount` (object) Non-negative. 
+    + `rental_agreement_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `primary_car_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `secondary_car_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `charges` (object) Required. 
+    + `preferred_vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `preferred_primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `preferred_secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `miscellaneous` (object) 
+    + `miscellaneous.is_greeting_sign_required` (boolean) 
+    + `miscellaneous.greeting_sign_notes` (string) String length: inclusive between 0 and 2000. 
+    + `miscellaneous.occasion` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.group_name` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.referral_source` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.arranged_by` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.reference_number` (string) String length: inclusive between 0 and 50. 
+    + `miscellaneous.voucher_number` (string) String length: inclusive between 0 and 50. 
+    + `confirmation_on_create` (object) 
+    + `confirmation_on_update` (object) 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token} 
+
+    + Body 
+
+{
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "payment_terms": "due_upon_receipt",
+  "payment_status": "unpaid",
+  "luggage_count": 1,
+  "passenger_count": 1,
+  "infant_child_seat_count": 2,
+  "booster_child_seat_count": 1,
+  "toddler_child_seat_count": 1,
+  "is_handicap_access_required": true,
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "stops": [
+    {
+      "name": "Amtrak: Back Bay Station",
+      "action": "stop",
+      "address": {
+        "country_code": "US",
+        "state_code": "MA",
+        "postal_code": "02116",
+        "city": "Boston",
+        "address_line1": "145 Dartmouth St"
+      },
+      "latitude": 42.34734,
+      "longitude": -71.075386
+    }
+  ],
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "booking_contact_account_id": 1003427363,
+  "booking_contact": {
+    "first_name": "David",
+    "last_name": "Stewart",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "billing_contact_account_id": 1001351994,
+  "billing_contact": {
+    "first_name": "Jerry",
+    "last_name": "Harris"
+  },
+  "passengers": [
+    {
+      "passenger_account_id": 1002334155,
+      "passenger": {
+        "first_name": "Christina",
+        "last_name": "Brady",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      }
+    }
+  ],
+  "vehicle_type_id": 14421,
+  "service_type_id": 88301,
+  "payment_card_id": 7019493,
+  "payment_type_id": 1,
+  "paid_amount": 0.0,
+  "authorized_amount": 0.0,
+  "total_amount": 196.89,
+  "primary_agent_id": 2,
+  "primary_agent_reward": {
+    "type": "amout",
+    "amount": 20.0
+  },
+  "secondary_agent_id": 35,
+  "secondary_agent_reward": {
+    "type": "percentage",
+    "amount": 3.0
+  },
+  "rental_agreement_id": 16493,
+  "primary_driver_id": 138,
+  "secondary_driver_id": 158,
+  "primary_car_id": 75,
+  "secondary_car_id": 73,
+  "charges": [
+    {
+      "rate_id": 2,
+      "name": "Per Hour",
+      "rate_type": "multiplier",
+      "rate_group": "base_rate",
+      "is_vat_tax": false,
+      "is_primary": true,
+      "unit_value": 15.0,
+      "unit_count": 1.0,
+      "total_value": 15.0
+    }
+  ],
+  "preferred_vehicle_type_id": 49328,
+  "preferred_primary_driver_id": 154,
+  "preferred_secondary_driver_id": 153,
+  "miscellaneous": {
+    "is_greeting_sign_required": true,
+    "greeting_sign_notes": "Greeting notes",
+    "occasion": "Corporate Travel",
+    "group_name": "Amabella",
+    "referral_source": "Website",
+    "arranged_by": "INET",
+    "reference_number": "12345",
+    "voucher_number": "7789652"
+  },
+  "confirmation_on_create": "email",
+  "confirmation_on_update": "email"
+}
+
+
+### Get Live Reservations [GET /companies/{company_alias}/reservations/live?from={from}&to={to}&search_for={search_for}&is_paid={is_paid}&page_index={page_index}&page_size={page_size}] 
+
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 57414239,
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "state": "unassigned",
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "primary_driver_id": 138,
+  "primary_driver": {
+    "first_name": "William",
+    "last_name": "Vegas"
+  },
+  "primary_car_id": 75,
+  "primary_car": {
+    "license_plate": "LAL 44",
+    "car_maker": "Lincoln",
+    "color": "BLACK"
+  },
+  "passenger_account_id": 1002334155,
+  "passenger": {
+    "first_name": "Issue",
+    "last_name": "314",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "total_amount": 196.89,
+  "payment_type_id": 1,
+  "payment_type": {
+    "name": "Credit Card",
+    "method": "other"
+  },
+  "vehicle_type_id": 14421,
+  "vehicle_type": {
+    "name": "BMW"
+  },
+  "created_at": "2017-04-14T18:25:09",
+  "created_by": "admin"
+}
+
+
+
+### Get Dispatched Reservations [GET /companies/{company_alias}/reservations/dispatch?from={from}&to={to}&search_for={search_for}&is_paid={is_paid}&page_index={page_index}&page_size={page_size}] 
+
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 57414239,
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "state": "unassigned",
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "primary_driver_id": 138,
+  "primary_driver": {
+    "first_name": "William",
+    "last_name": "Vegas"
+  },
+  "primary_car_id": 75,
+  "primary_car": {
+    "license_plate": "LAL 44",
+    "car_maker": "Lincoln",
+    "color": "BLACK"
+  },
+  "passenger_account_id": 1002334155,
+  "passenger": {
+    "first_name": "Issue",
+    "last_name": "314",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "total_amount": 196.89,
+  "payment_type_id": 1,
+  "payment_type": {
+    "name": "Credit Card",
+    "method": "other"
+  },
+  "vehicle_type_id": 14421,
+  "vehicle_type": {
+    "name": "BMW"
+  },
+  "created_at": "2017-04-14T18:25:09",
+  "created_by": "admin"
+}
+
+
+
+### Get Settled Reservations [GET /companies/{company_alias}/reservations/settle?from={from}&to={to}&search_for={search_for}&is_paid={is_paid}&page_index={page_index}&page_size={page_size}] 
+
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 57414239,
+  "confirmation_prefix": "",
+  "confirmation_number": "39666",
+  "confirmation_suffix": "",
+  "scheduled_pickup_at": "2017-04-14T18:27:00",
+  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+  "state": "unassigned",
+  "pickup": {
+    "name": "Name of Address",
+    "scheduled_arrival_at": "2017-04-15T12:54:00",
+    "action": "pickup",
+    "notes": "pickup notes",
+    "address": {
+      "country_code": "US",
+      "state_code": "NY",
+      "postal_code": "11354",
+      "city": "Queens",
+      "address_line1": "123 Main St"
+    },
+    "latitude": 40.7624474,
+    "longitude": -73.83165
+  },
+  "dropoff": {
+    "name": "John F. Kennedy International Airport",
+    "scheduled_arrival_at": "2017-04-15T07:03:00",
+    "action": "dropoff",
+    "address": {
+      "state_code": "NY"
+    },
+    "flight": {
+      "airport_code": "JFK",
+      "airline_code": "AA",
+      "flight_number": "9070",
+      "tail_number": "A7-E3",
+      "terminal": "4",
+      "gateway": "A7",
+      "meet_option": "curbside",
+      "departure_from_or_arrival_to": "AUH",
+      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+    },
+    "latitude": 40.63975,
+    "longitude": -73.77892
+  },
+  "primary_driver_id": 138,
+  "primary_driver": {
+    "first_name": "William",
+    "last_name": "Vegas"
+  },
+  "primary_car_id": 75,
+  "primary_car": {
+    "license_plate": "LAL 44",
+    "car_maker": "Lincoln",
+    "color": "BLACK"
+  },
+  "passenger_account_id": 1002334155,
+  "passenger": {
+    "first_name": "Issue",
+    "last_name": "314",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "total_amount": 196.89,
+  "payment_type_id": 1,
+  "payment_type": {
+    "name": "Credit Card",
+    "method": "other"
+  },
+  "vehicle_type_id": 14421,
+  "vehicle_type": {
+    "name": "BMW"
+  },
+  "created_at": "2017-04-14T18:25:09",
+  "created_by": "admin"
+}
