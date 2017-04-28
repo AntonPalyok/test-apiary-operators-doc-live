@@ -228,8 +228,62 @@ The tables below describe all possible request/response parameters:
 
 In 'execution' console you can see request/response samples, data types and sizes of parameters
 
+## Group General Resources
 
+The resources in this section can be used to assist with populating form elements or using auto-complete functionality.
 
+## Payment Types [/payment_types]
+The available Payment Types (methods) for company. Payment type "code" values: VOUCHER, MC, VI, AX, DC, BT, CHECK, CCO, CC, CASH, DONATION, TRADE, BARTER, OTHER, BILL. 
+Payment type "type" values: other, credit_card, bill.
+
+### Get Collection [GET /companies/{company_alias}/resources/payment_types?is_active={is_active}&page_index={page_index}&page_size={page_size}]
+Returns a paged collection of Payment Types.
+
++ Parameters
+    + is_active: true (optional, boolean)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: limotest1 (required, string)
+    
++ Request
+
++ Headers
+
+        Content-Type: application/json
+        Authorization: bearer {access_token}
++ Response 200
+
+    + Headers
+
+        Content-Type: application/json
+
+    + Body
+
+        { "total_count": 1, "items": [ { "id": 1, "code":"OTHER", "name": "sample string 1", "type": "other", "isActive": true }, { "id": 2, "code":"OTHER1" "name": "sample string 2", "type": "other", "isActive":false } ] }        
+
+### Get By Id [GET /companies/{company_alias}/resources/payment_types/{id}]
+Returns the Payment Type by Id.
++ Parameters
+    + id: `1` (required, int)
+    + company_alias: limotest1 (required, string)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+            Content-Type: application/json
+            
+    + Body
+
+        { "id": 1, "code":"OTHER", "name":"sample string", "type": "other", "is_active":true }
+
+            
 ## Group Reservations
 
 ### Get Reservation [GET /companies/{company_alias}/reservations/{id}] 
@@ -270,7 +324,7 @@ In 'execution' console you can see request/response samples, data types and size
   "service_type": {
     "name": "Airport Departure"
   },
-  "payment_card": {
+  "credit_card": {
     "holder_type": "unknown",
     "card_number_first_digit": "5",
     "card_number_last_digits": "1462",
@@ -297,12 +351,12 @@ In 'execution' console you can see request/response samples, data types and size
   },
   "primary_car": {
     "license_plate": "LAL 44",
-    "car_maker": "Lincoln",
+    "car_make": "Lincoln",
     "color": "BLACK"
   },
   "secondary_car": {
     "license_plate": "LAL 11",
-    "car_maker": "Cadillac",
+    "car_make": "Cadillac",
     "color": "BLACK"
   },
   "preferred_vehicle_type": {
@@ -406,7 +460,7 @@ In 'execution' console you can see request/response samples, data types and size
   ],
   "vehicle_type_id": 14421,
   "service_type_id": 88301,
-  "payment_card_id": 7019493,
+  "credit_card_id": 7019493,
   "payment_type_id": 1,
   "paid_amount": 0.0,
   "authorized_amount": 0.0,
@@ -561,7 +615,7 @@ In 'execution' console you can see request/response samples, data types and size
     + `passengers` (object) 
     + `vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `service_type_id` (int) Range: inclusive between 1 and 2147483647. 
-    + `payment_card_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `credit_card_id` (int) Range: inclusive between 1 and 2147483647. 
     + `payment_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `paid_amount` (object) Non-negative. 
     + `authorized_amount` (object) Non-negative. 
@@ -692,7 +746,7 @@ In 'execution' console you can see request/response samples, data types and size
   ],
   "vehicle_type_id": 14421,
   "service_type_id": 88301,
-  "payment_card_id": 7019493,
+  "credit_card_id": 7019493,
   "payment_type_id": 1,
   "paid_amount": 0.0,
   "authorized_amount": 0.0,
@@ -767,7 +821,7 @@ In 'execution' console you can see request/response samples, data types and size
   "service_type": {
     "name": "Airport Departure"
   },
-  "payment_card": {
+  "credit_card": {
     "holder_type": "unknown",
     "card_number_first_digit": "5",
     "card_number_last_digits": "1462",
@@ -794,12 +848,12 @@ In 'execution' console you can see request/response samples, data types and size
   },
   "primary_car": {
     "license_plate": "LAL 44",
-    "car_maker": "Lincoln",
+    "car_make": "Lincoln",
     "color": "BLACK"
   },
   "secondary_car": {
     "license_plate": "LAL 11",
-    "car_maker": "Cadillac",
+    "car_make": "Cadillac",
     "color": "BLACK"
   },
   "preferred_vehicle_type": {
@@ -903,7 +957,7 @@ In 'execution' console you can see request/response samples, data types and size
   ],
   "vehicle_type_id": 14421,
   "service_type_id": 88301,
-  "payment_card_id": 7019493,
+  "credit_card_id": 7019493,
   "payment_type_id": 1,
   "paid_amount": 0.0,
   "authorized_amount": 0.0,
@@ -1059,7 +1113,7 @@ In 'execution' console you can see request/response samples, data types and size
     + `passengers` (object) 
     + `vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `service_type_id` (int) Range: inclusive between 1 and 2147483647. 
-    + `payment_card_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `credit_card_id` (int) Range: inclusive between 1 and 2147483647. 
     + `payment_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `paid_amount` (object) Non-negative. 
     + `authorized_amount` (object) Non-negative. 
@@ -1190,7 +1244,7 @@ In 'execution' console you can see request/response samples, data types and size
   ],
   "vehicle_type_id": 14421,
   "service_type_id": 88301,
-  "payment_card_id": 7019493,
+  "credit_card_id": 7019493,
   "payment_type_id": 1,
   "paid_amount": 0.0,
   "authorized_amount": 0.0,
@@ -1322,7 +1376,7 @@ In 'execution' console you can see request/response samples, data types and size
   "primary_car_id": 75,
   "primary_car": {
     "license_plate": "LAL 44",
-    "car_maker": "Lincoln",
+    "car_make": "Lincoln",
     "color": "BLACK"
   },
   "passenger_account_id": 1002334155,
@@ -1429,7 +1483,7 @@ In 'execution' console you can see request/response samples, data types and size
   "primary_car_id": 75,
   "primary_car": {
     "license_plate": "LAL 44",
-    "car_maker": "Lincoln",
+    "car_make": "Lincoln",
     "color": "BLACK"
   },
   "passenger_account_id": 1002334155,
@@ -1536,7 +1590,7 @@ In 'execution' console you can see request/response samples, data types and size
   "primary_car_id": 75,
   "primary_car": {
     "license_plate": "LAL 44",
-    "car_maker": "Lincoln",
+    "car_make": "Lincoln",
     "color": "BLACK"
   },
   "passenger_account_id": 1002334155,
