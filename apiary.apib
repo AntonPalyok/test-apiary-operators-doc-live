@@ -259,7 +259,7 @@ Returns a paged collection of Payment Types.
 
     + Body
 
-        { "total_count": 1, "items": [ { "id": 1, "code":"OTHER", "name": "sample string 1", "type": "other", "isActive": true }, { "id": 2, "code":"OTHER1" "name": "sample string 2", "type": "other", "isActive":false } ] }        
+        { "total_count": 2, "items": [ { "id": 1, "code":"OTHER", "name": "sample string 1", "type": "other", "isActive": true }, { "id": 2, "code":"OTHER1" "name": "sample string 2", "type": "other", "isActive":false } ] }        
 
 ### Get By Id [GET /companies/{company_alias}/resources/payment_types/{id}]
 Returns the Payment Type by Id.
@@ -282,7 +282,57 @@ Returns the Payment Type by Id.
     + Body
 
         { "id": 1, "code":"OTHER", "name":"sample string", "type": "other", "is_active":true }
+        
+## Service Types [/service_types]
+The available Service Types for company.
 
+### Get Collection [GET /companies/{company_alias}/resources/service_types?is_active={is_active}&page_index={page_index}&page_size={page_size}]
+Returns a paged collection of Service Types. 
+
++ Parameters
+    + is_active: true (optional, boolean)
+    + page_index: 1 (optional, int) 
+    + page_size: 20 (optional, int)
+    + company_alias: limotest1 (required, string)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            { "total_count": 2, "items": [ { "id"Typ: 1, "name": "Hourly/As Directed", "is_active": true }, { "id": 2, "name": "Airport Arrival", "is_active": true } ] }
+
+### Get By Id [GET /companies/{company_alias}/resources/service_types/{id}]
+Returns the Service Type by Id.
++ Parameters
+    + id: `1` (required, int)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            { "id": 1, "name": "Hourly/As Directed", "is_active": true }
             
 ## Group Reservations
 
