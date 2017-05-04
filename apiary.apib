@@ -333,7 +333,180 @@ Returns the Service Type by Id.
     + Body
 
             { "id": 1, "name": "Hourly/As Directed", "is_active": true }
-            
+
+
+## Airports [/airports]
+Provides read operations for Airports.
+
+### Get By Iata code [GET /resources/airports?iata={iata}] 
+Returns Airport by Iata code.
+
++ Parameters 
+    + iata: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "iata": "sample string 1",
+  "name": "sample string 2",
+  "address": {
+    "name": "sample string 1",
+    "country_code": "sample string 2",
+    "state_code": "sample string 3",
+    "postal_code": "sample string 4",
+    "city": "sample string 5",
+    "address_line1": "sample string 6",
+    "address_line2": "sample string 7"
+  },
+  "location": {
+    "latitude": 1.1,
+    "longitude": 2.1
+  }
+}
+
+### Get Collecton [GET /resources/airports?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
+Returns a paged collection of Airports. 
+
++ Parameters 
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "iata": "sample string 1",
+      "name": "sample string 2",
+      "address": {
+        "name": "sample string 1",
+        "country_code": "sample string 2",
+        "state_code": "sample string 3",
+        "postal_code": "sample string 4",
+        "city": "sample string 5",
+        "address_line1": "sample string 6",
+        "address_line2": "sample string 7"
+      },
+      "location": {
+        "latitude": 1.1,
+        "longitude": 2.1
+      }
+    },
+    {
+      "iata": "sample string 1",
+      "name": "sample string 2",
+      "address": {
+        "name": "sample string 1",
+        "country_code": "sample string 2",
+        "state_code": "sample string 3",
+        "postal_code": "sample string 4",
+        "city": "sample string 5",
+        "address_line1": "sample string 6",
+        "address_line2": "sample string 7"
+      },
+      "location": {
+        "latitude": 1.1,
+        "longitude": 2.1
+      }
+    }
+  ]
+}
+
+## Airlines [/airlines]
+Provides read operations for Airlines.
+
+### Get By Iata code [GET /resources/airlines?iata={iata}] 
+Returns Airline by Iata code. 
+
++ Parameters 
+    + iata: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "iata": "sample string 1",
+  "name": "sample string 2"
+}
+ 
+### Get Collection [GET /resources/airlines?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of Airlines.
+
++ Parameters 
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "iata": "sample string 1",
+      "name": "sample string 2"
+    },
+    {
+      "iata": "sample string 1",
+      "name": "sample string 2"
+    }
+  ]
+}
+
+
 ## Group Reservations
 
 ### Get Reservation [GET /companies/{company_alias}/reservations/{id}] 
@@ -421,9 +594,7 @@ Returns the Service Type by Id.
     "first_name": "Vernon",
     "last_name": "Poovey"
   },
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "payment_terms": "due_upon_receipt",
@@ -446,8 +617,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "stops": [
     {
@@ -460,8 +633,10 @@ Returns the Service Type by Id.
         "city": "Boston",
         "address_line1": "145 Dartmouth St"
       },
-      "latitude": 42.34734,
-      "longitude": -71.075386
+      "location": {
+        "latitude": 42.34734,
+        "longitude": -71.075386
+      }
     }
   ],
   "dropoff": {
@@ -482,8 +657,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "booking_contact_account_id": 1003427363,
   "booking_contact": {
@@ -569,12 +746,20 @@ Returns the Service Type by Id.
 
 + Request 
 
+    + `company_alias_id` (string) 
     + `confirmation_prefix` (string) String length: inclusive between 0 and 20. 
     + `confirmation_number` (string) String length: inclusive between 0 and 50. 
     + `confirmation_suffix` (string) String length: inclusive between 0 and 20. 
     + `scheduled_pickup_at` (object) 
     + `actual_pickup_at` (object) 
     + `scheduled_dropoff_at` (object) 
+    + `actual_dropoff_at` (object) 
+    + `scheduled_duration` (int) Range: inclusive between 60 and 2147483647. 
+    + `actual_duration` (int) Range: inclusive between 60 and 2147483647. 
+    + `dispatched_at` (object) 
+    + `dispatched_by` (string) 
+    + `closed_at` (object) 
+    + `closed_by` (string) 
     + `payment_terms` (object) 
     + `payment_status` (object) 
     + `luggage_count` (int) Range: inclusive between 0 and 2147483647. 
@@ -614,8 +799,9 @@ Returns the Service Type by Id.
     + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_at_or_arrival_at` (object) 
-    + `latitude` (float) 
-    + `longitude` (float) 
+    + `location` (object) Required. 
+    + `location.latitude` (float) 
+    + `location.longitude` (float) 
     + `stops` (object) Required. 
     + `dropoff` (object) 
     + `dropoff.name` (string) String length: inclusive between 0 and 500. 
@@ -648,8 +834,9 @@ Returns the Service Type by Id.
     + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_at_or_arrival_at` (object) 
-    + `latitude` (float) 
-    + `longitude` (float) 
+    + `location` (object) Required. 
+    + `location.latitude` (float) 
+    + `location.longitude` (float) 
     + `booking_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
     + `booking_contact` (object) 
     + `booking_contact.first_name` (string) String length: inclusive between 0 and 50. 
@@ -687,6 +874,7 @@ Returns the Service Type by Id.
     + `preferred_vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `preferred_primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
     + `preferred_secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `affiliate_account_id` (int) Range: inclusive between 1 and 2147483647. 
     + `miscellaneous` (object) 
     + `miscellaneous.is_greeting_sign_required` (boolean) 
     + `miscellaneous.greeting_sign_notes` (string) String length: inclusive between 0 and 2000. 
@@ -697,7 +885,7 @@ Returns the Service Type by Id.
     + `miscellaneous.reference_number` (string) String length: inclusive between 0 and 50. 
     + `miscellaneous.voucher_number` (string) String length: inclusive between 0 and 50. 
     + `confirmation_on_create` (object) 
-    + `confirmation_on_update` (object) 
+    + `confirmation_on_update` (object)  
 
     + Headers 
 
@@ -707,9 +895,7 @@ Returns the Service Type by Id.
     + Body 
 
 {
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "payment_terms": "due_upon_receipt",
@@ -732,8 +918,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "stops": [
     {
@@ -746,8 +934,10 @@ Returns the Service Type by Id.
         "city": "Boston",
         "address_line1": "145 Dartmouth St"
       },
-      "latitude": 42.34734,
-      "longitude": -71.075386
+      "location": {
+        "latitude": 42.34734,
+        "longitude": -71.075386
+      }
     }
   ],
   "dropoff": {
@@ -768,8 +958,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "booking_contact_account_id": 1003427363,
   "booking_contact": {
@@ -918,9 +1110,7 @@ Returns the Service Type by Id.
     "first_name": "Vernon",
     "last_name": "Poovey"
   },
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "payment_terms": "due_upon_receipt",
@@ -943,8 +1133,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "stops": [
     {
@@ -957,8 +1149,10 @@ Returns the Service Type by Id.
         "city": "Boston",
         "address_line1": "145 Dartmouth St"
       },
-      "latitude": 42.34734,
-      "longitude": -71.075386
+      "location": {
+        "latitude": 42.34734,
+        "longitude": -71.075386
+      }
     }
   ],
   "dropoff": {
@@ -979,8 +1173,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "booking_contact_account_id": 1003427363,
   "booking_contact": {
@@ -1067,12 +1263,20 @@ Returns the Service Type by Id.
 
 + Request 
 
+    + `company_alias_id` (string) 
     + `confirmation_prefix` (string) String length: inclusive between 0 and 20. 
     + `confirmation_number` (string) String length: inclusive between 0 and 50. 
     + `confirmation_suffix` (string) String length: inclusive between 0 and 20. 
     + `scheduled_pickup_at` (object) 
+    + `actual_pickup_at` (object) 
     + `scheduled_dropoff_at` (object) 
     + `actual_dropoff_at` (object) 
+    + `scheduled_duration` (int) Range: inclusive between 60 and 2147483647. 
+    + `actual_duration` (int) Range: inclusive between 60 and 2147483647. 
+    + `dispatched_at` (object) 
+    + `dispatched_by` (string) 
+    + `closed_at` (object) 
+    + `closed_by` (string) 
     + `payment_terms` (object) 
     + `payment_status` (object) 
     + `luggage_count` (int) Range: inclusive between 0 and 2147483647. 
@@ -1112,8 +1316,9 @@ Returns the Service Type by Id.
     + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_at_or_arrival_at` (object) 
-    + `latitude` (float) 
-    + `longitude` (float) 
+    + `location` (object) Required. 
+    + `location.latitude` (float) 
+    + `location.longitude` (float) 
     + `stops` (object) Required. 
     + `dropoff` (object) 
     + `dropoff.name` (string) String length: inclusive between 0 and 500. 
@@ -1146,8 +1351,9 @@ Returns the Service Type by Id.
     + `cruise.cruise_line_name` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_from_or_arrival_to` (string) String length: inclusive between 0 and 250. 
     + `cruise.departure_at_or_arrival_at` (object) 
-    + `latitude` (float) 
-    + `longitude` (float) 
+    + `location` (object) Required. 
+    + `location.latitude` (float) 
+    + `location.longitude` (float) 
     + `booking_contact_account_id` (int) Range: inclusive between 1 and 2147483647. 
     + `booking_contact` (object) 
     + `booking_contact.first_name` (string) String length: inclusive between 0 and 50. 
@@ -1185,6 +1391,7 @@ Returns the Service Type by Id.
     + `preferred_vehicle_type_id` (int) Range: inclusive between 1 and 2147483647. 
     + `preferred_primary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
     + `preferred_secondary_driver_id` (int) Range: inclusive between 1 and 2147483647. 
+    + `affiliate_account_id` (int) Range: inclusive between 1 and 2147483647. 
     + `miscellaneous` (object) 
     + `miscellaneous.is_greeting_sign_required` (boolean) 
     + `miscellaneous.greeting_sign_notes` (string) String length: inclusive between 0 and 2000. 
@@ -1195,7 +1402,7 @@ Returns the Service Type by Id.
     + `miscellaneous.reference_number` (string) String length: inclusive between 0 and 50. 
     + `miscellaneous.voucher_number` (string) String length: inclusive between 0 and 50. 
     + `confirmation_on_create` (object) 
-    + `confirmation_on_update` (object) 
+    + `confirmation_on_update` (object)
 
     + Headers 
 
@@ -1205,9 +1412,7 @@ Returns the Service Type by Id.
     + Body 
 
 {
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "payment_terms": "due_upon_receipt",
@@ -1230,8 +1435,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "stops": [
     {
@@ -1244,8 +1451,10 @@ Returns the Service Type by Id.
         "city": "Boston",
         "address_line1": "145 Dartmouth St"
       },
-      "latitude": 42.34734,
-      "longitude": -71.075386
+      "location": {
+        "latitude": 42.34734,
+        "longitude": -71.075386
+      }
     }
   ],
   "dropoff": {
@@ -1266,8 +1475,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "booking_contact_account_id": 1003427363,
   "booking_contact": {
@@ -1345,6 +1556,7 @@ Returns the Service Type by Id.
 }
 
 
+
 ### Get Live Reservations [GET /companies/{company_alias}/reservations/live?from={from}&to={to}&search_for={search_for}&is_paid={is_paid}&page_index={page_index}&page_size={page_size}] 
 
 + Parameters 
@@ -1376,9 +1588,7 @@ Returns the Service Type by Id.
 
 {
   "id": 57414239,
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "state": "unassigned",
@@ -1394,8 +1604,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "dropoff": {
     "name": "John F. Kennedy International Airport",
@@ -1415,8 +1627,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "primary_driver_id": 138,
   "primary_driver": {
@@ -1483,9 +1697,7 @@ Returns the Service Type by Id.
 
 {
   "id": 57414239,
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "state": "unassigned",
@@ -1501,8 +1713,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "dropoff": {
     "name": "John F. Kennedy International Airport",
@@ -1522,8 +1736,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "primary_driver_id": 138,
   "primary_driver": {
@@ -1590,9 +1806,7 @@ Returns the Service Type by Id.
 
 {
   "id": 57414239,
-  "confirmation_prefix": "",
   "confirmation_number": "39666",
-  "confirmation_suffix": "",
   "scheduled_pickup_at": "2017-04-14T18:27:00",
   "scheduled_dropoff_at": "2017-04-14T20:16:00",
   "state": "unassigned",
@@ -1608,8 +1822,10 @@ Returns the Service Type by Id.
       "city": "Queens",
       "address_line1": "123 Main St"
     },
-    "latitude": 40.7624474,
-    "longitude": -73.83165
+    "location": {
+      "latitude": 40.7624474,
+      "longitude": -73.83165
+    }
   },
   "dropoff": {
     "name": "John F. Kennedy International Airport",
@@ -1629,8 +1845,10 @@ Returns the Service Type by Id.
       "departure_from_or_arrival_to": "AUH",
       "departure_at_or_arrival_at": "2017-04-15T07:23:00"
     },
-    "latitude": 40.63975,
-    "longitude": -73.77892
+    "location": {
+      "latitude": 40.63975,
+      "longitude": -73.77892
+    }
   },
   "primary_driver_id": 138,
   "primary_driver": {
