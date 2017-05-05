@@ -282,6 +282,54 @@ Returns the Payment Type by Id.
 
         { "id": 1, "name":"sample string", "type": "other", "is_active":true }
         
+## Vehicle Types [/vehicle_types] 
+The available Vehicle Types for company.
+
+### Get Collections [GET /companies/{company_alias}/resources/vehicle_types?is_active={is_active}&is_visible={is_visible}&page_index={page_index}&page_size={page_size}&service_type_id={service_type_id}]
+Returns a paged collection of Vehicle Types.
+
++ Parameters
+
+    + company_alias: limotest1 (required, string)
+    + is_active: true (optional, boolean)
+    + is_visible: true (optional, boolean)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + service_type_id: 1 (optional, int)
+
++ Request
+    + Headers
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+            Content-Type: application/json
+
+    + Body
+            {"total_count":2,"items":[{"id":1,"images":["http://webapihelppage1.com","http://webapihelppage2.com"],"name":"sample string 1","passenger_capacity":1,"luggage_capacity": 1,"color":"#ee1d24","description":"sample string 2","is_handicap_accessible":true,"is_active":true,"is_visible":true},{"id":2,"images":["http://webapihelppage3.com","http://webapihelppage4.com"],"name": "sample string 3","passenger_capacity":1,"luggage_capacity":1,"code":"#ee1d24","description":"sample string 4","is_handicap_accessible":true,"is_active":true,"is_visible": true}]}
+    
+### Get By Id [GET /companies/{company_alias}/resources/vehicle_types/{id}]
+Returns the Vehicle Type by Id
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+    + id: `1` (required, int)
+
++ Request    
+    + Headers 
+        Content-Type: application/json 
+        Authorization: bearer {access_token}   
+        
++ Response 200
+
+    + Headers
+        Content-Type: application/json
+
+    + Body
+        {"id":1,"images":["http://webapihelppage1.com","http://webapihelppage2.com"],"name":"sample string 1","passenger_capacity":1,"luggage_capacity": 1,"color":"#ee1d24","description":"sample string 2","is_handicap_accessible":true,"is_active":true,"is_visible":true}
+            
 ## Service Types [/service_types]
 The available Service Types for company.
 
