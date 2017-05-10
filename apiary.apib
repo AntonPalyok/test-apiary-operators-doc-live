@@ -385,11 +385,12 @@ Returns the Service Type by Id.
 ## Airports [/airports]
 Provides read operations for Airports.
 
-### Get By Iata code [GET /resources/airports?iata={iata}] 
+### Get By Iata code [GET /companies/{company_alias}/resources/airports?iata={iata}] 
 Returns Airport by Iata code.
 
 + Parameters 
     + iata: (required, string)
+    + company_alias: (required, string)
 
 + Request 
 
@@ -424,13 +425,15 @@ Returns Airport by Iata code.
   }
 }
 
-### Get Collecton [GET /resources/airports?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
-Returns a paged collection of Airports. 
+### Get Collecton [GET /companies/{company_alias}/resources/airports?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
+Returns a paged collection of Airports.
+Use `search_for` parameter to filter results by airport Iata code or name.
 
 + Parameters 
     + search_for: (optional, string)
     + page_index: 1 (optional, int)
     + page_size: 20 (optional, int)
+    + company_alias: (required, string)
 
 + Request 
 
@@ -490,11 +493,12 @@ Returns a paged collection of Airports.
 ## Airlines [/airlines]
 Provides read operations for Airlines.
 
-### Get By Iata code [GET /resources/airlines?iata={iata}] 
-Returns Airline by Iata code. 
+### Get By Iata code [GET /companies/{company_alias}/resources/airlines?iata={iata}] 
+Returns Airline by Iata code.
 
 + Parameters 
     + iata: (required, string)
+    + company_alias: (required, string)
 
 + Request 
 
@@ -516,13 +520,15 @@ Returns Airline by Iata code.
   "name": "sample string 2"
 }
  
-### Get Collection [GET /resources/airlines?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
+### Get Collection [GET /companies/{company_alias}/resources/airlines?search_for={search_for}&page_index={page_index}&page_size={page_size}] 
 Returns paged collection of Airlines.
+Use `search_for` parameter to filter results by airport Iata code or name.
 
 + Parameters 
     + search_for: (optional, string)
     + page_index: 1 (optional, int)
     + page_size: 20 (optional, int)
+    + company_alias: (required, string)
 
 + Request 
 
