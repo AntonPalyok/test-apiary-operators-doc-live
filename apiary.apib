@@ -329,6 +329,53 @@ Returns the Vehicle Type by Id
 
     + Body
         {"id":1,"images":["http://webapihelppage1.com","http://webapihelppage2.com"],"name":"sample string 1","passenger_capacity":1,"luggage_capacity": 1,"color":"#ee1d24","description":"sample string 2","is_handicap_accessible":true,"is_active":true,"is_visible":true}
+    
+## Cars [/cars]
+The available Cars for company.
+
+### Get Collections [GET /companies/{company_alias}/resources/cars?is_active={is_active}&page_index={page_index}&page_size={page_size}]
+Returns a paged collection of Cars.
+
++ Parameters
+
+    + company_alias: limotest1 (required, string)
+    + is_active: true (optional, boolean)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request
+    + Headers
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+            Content-Type: application/json
+
+    + Body
+            {"total_count":2,"items":[{"id": 1,"name": "sample string 1","vehicle_type_id": 4,"notes": "sample string 2","car_make": "sample string 3","car_model": "sample string 4","car_color": "sample string 5","color": "sample string 6","passenger_capacity": 5,"license_plate": "sample string 7","is_active": true,"cellular_phone": "sample string 8","cellular_phone_wireless_provider": "sample string 9"},{"id": 2,"name": "sample string 10","vehicle_type_id": 4,"notes": "sample string 11","car_make": "sample string 12","car_model": "sample string 13","car_color": "sample string 14","color": "sample string 15","passenger_capacity": 4,"license_plate": "sample string 16","is_active": true,"cellular_phone": "sample string 17","cellular_phone_wireless_provider": "sample string 18"}]}
+    
+### Get By Id [GET /companies/{company_alias}/resources/cars/{id}]
+Returns the Car by Id
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+    + id: `1` (required, int)
+
++ Request    
+    + Headers 
+        Content-Type: application/json 
+        Authorization: bearer {access_token}   
+        
++ Response 200
+
+    + Headers
+        Content-Type: application/json
+
+    + Body
+        {"id": 1,"name": "sample string 1","vehicle_type_id": 4,"notes": "sample string 2","car_make": "sample string 3","car_model": "sample string 4","car_color": "sample string 5","color": "sample string 6","passenger_capacity": 5,"license_plate": "sample string 7","is_active": true,"cellular_phone": "sample string 8","cellular_phone_wireless_provider": "sample string 9"}
+    
             
 ## Service Types [/service_types]
 The available Service Types for company.
