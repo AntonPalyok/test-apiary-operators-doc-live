@@ -2201,6 +2201,9 @@ Make new reservation offer
 
 + Request
 
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
+
     + Headers
 
             Content-Type: application/json
@@ -2225,6 +2228,9 @@ Accept offered reservation
     + id: 1 (int, required)
 
 + Request
+
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2251,6 +2257,9 @@ Reject offered reservation
 
 + Request
 
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
+
     + Headers
 
             Content-Type: application/json
@@ -2271,10 +2280,14 @@ Reject offered reservation
 Convert quote to live reservation
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
 
 + Request
+
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2302,6 +2315,9 @@ Assign reservation to driver
 
 + Request
 
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
+
     + Headers
 
             Content-Type: application/json
@@ -2327,6 +2343,9 @@ Unassigns reservation from driver
 
 + Request
 
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
+
     + Headers
 
             Content-Type: application/json
@@ -2347,10 +2366,14 @@ Unassigns reservation from driver
 Shown that the driver is on the way to pickup location
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
 
 + Request
+
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2376,6 +2399,8 @@ Shown that the driver is arrived at pickup location
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2401,6 +2426,8 @@ Shown that the driver is circling on pickup location
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2426,6 +2453,8 @@ Shown that the Driver started wait to the passenger
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2451,6 +2480,8 @@ Shown that the Driver ended wait to the passenger
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2476,6 +2507,8 @@ Shown that the driver picked up the passenger
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2501,6 +2534,8 @@ Shown that the driver delivered the passenger to the destination
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2527,6 +2562,8 @@ Restore reservation after deleting
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2552,6 +2589,8 @@ Retract reservation
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2577,6 +2616,8 @@ Cancel reservation
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2602,6 +2643,8 @@ Cancels reservation by passenger
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2627,6 +2670,8 @@ Cancels reservation by affiliate
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2652,6 +2697,8 @@ Close reservation
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2677,6 +2724,8 @@ Delete reservation
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2695,11 +2744,15 @@ Delete reservation
             
 ### No Show [POST /companies/{company_alias}/reservations/{id}/no_show]
 
+Sets when passenger did not arrive to pickup location
+
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -2725,6 +2778,8 @@ Change reservation status without changing reservation state
     + id: 1 (int, required)
 
 + Request
+    + `status_id` (Int). Required. Inclusive between 1 and Int Max value.
+    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
