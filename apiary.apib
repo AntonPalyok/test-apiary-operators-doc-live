@@ -2164,6 +2164,37 @@ Use `search_for` parameter to filter results by airport Iata code or name.
             
 ## Group Transitions by Reservation States
 
+Next endpoints allows make moving by reservation states for Operator and Driver flow and also manage reservation statuses.
+All transitions responses, except `keep state` contains information about current state, permitted states and transition. 
+Also information about reservation statuses can be returned.
+For this you should pass parameter `include_statuses` which can have next values: `all`, `mapped`, `unmapped`, `none` (by default). 
+Passing the `status_id` parameter in any transition allows set this reservation status if it mapped to appropriate state. 
+In case when `status_id` is not passed - will be set first reservation status that mapped to state.
+
+* For `Keep State` transition parameter `status_id` is required.
+
+In tables bellow described request/response fields:
+
+<b>Request:</b>
+| Parameter         |Type   |Required                   |Description                                                |
+|-------------------|-------|---------------------------|-----------------------------------------------------------|
+| company_alias     | String|Yes                        | The Alias of you company. Example: `limotes1`             |
+| id                | Int   |Yes                        | ID of reservation                                         |                          |
+| status_id         | Int   |Yes (for Keep State only)  | ID of reservation status that will set after transition   |                                                |
+| inclusde_statuses | String|No                         | Allow returns reservation statuses in response. Possible values: `none` - (by default) statuses not returns in response, `all` - statuses returns in response, `mapped` - returns mapped statuses, `unmapped` - returns umpapped statues. | 
+
+<b>Response:</b>
+| Parameter                         |Type   |Description                         |
+|-----------------------------------|-------|------------------------------------|
+| state                             |String |Current state after transition      |
+| transitions                       |Array  |List of permitted transitions       |                          |
+| transitions[i].state              |String |State name                          |
+| transitions[i].transition         |String |Transition name                     | 
+| transitions[i].statuses           |Array  |List of mapped reservation statuses |
+| transitions[i].statuses[j].id     |Int    |Reservation status ID               |                  
+| transitions[i].statuses[j].name   |Int    |Reservation status Name             | 
+| transitions[i].statuses[j].color  |String |Status color                        | 
+
 ### Get Permitted Transitions [GET /companies/{company_alias}/reservations/{id}/transitions]
 
 Returns collection of available triggers for Operator Reservation by specified ID
