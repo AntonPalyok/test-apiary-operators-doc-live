@@ -2164,12 +2164,14 @@ Use `search_for` parameter to filter results by airport Iata code or name.
             
 ## Group Transitions by Reservation States
 
-Next endpoints allows make moving by reservation states for Operator and Driver flow and also manage reservation statuses.
-All transitions responses, except `keep state` contains information about current state, permitted states and transition. 
-Also information about reservation statuses can be returned.
-For this you should pass parameter `include_statuses` which can have next values: `all`, `mapped`, `unmapped`, `none` (by default). 
-Passing the `status_id` parameter in any transition allows set this reservation status if it mapped to appropriate state. 
-In case when `status_id` is not passed - will be set first reservation status that mapped to state.
+Next endpoints allow transitioning by reservation states and managing reservation statuses for Operator and Driver flow. 
+All transition responses, except `keep_state`, contain information about current state, permitted states and transition. 
+
+For returning information about reservation statuses user must pass into URL parameter `include_statuses` with one of the next values: `all`, `mapped`, `unmapped`, `none` (default).
+
+To change status on specific, while performing state transition, make sure that the desired status is mapped to the final state and pass corresponding `status_id` parameter into URI.
+
+If `status_id` parameter for desired status is not specified in URL then first from the list of mapped  to the final state statuses will be set.
 
 * For `Keep State` transition parameter `status_id` is required.
 
@@ -2394,7 +2396,7 @@ Unassigns reservation from driver
          
 ### Go to Pickup [POST /companies/{company_alias}/reservations/{id}/go_to_pickup]
 
-Shown that the driver is on the way to pickup location
+Shows that the driver is on the way to pickup location
 
 + Parameters
 
@@ -2423,7 +2425,7 @@ Shown that the driver is on the way to pickup location
          
 ### Arrive at Pickup [POST /companies/{company_alias}/reservations/{id}/arrive_at_pickup]
 
-Shown that the driver is arrived at pickup location
+Shows that the driver is arrived at pickup location
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2450,7 +2452,7 @@ Shown that the driver is arrived at pickup location
          
 ### Circle [POST /companies/{company_alias}/reservations/{id}/circle]
 
-Shown that the driver is circling on pickup location
+Shows that the driver is circling on pickup location
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2477,7 +2479,7 @@ Shown that the driver is circling on pickup location
          
 ### Start Wait [POST /companies/{company_alias}/reservations/{id}/start_wait]
 
-Shown that the Driver started wait to the passenger
+Shows that the Driver started wait to the passenger
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2504,7 +2506,7 @@ Shown that the Driver started wait to the passenger
 
 ### End Wait [POST /companies/{company_alias}/reservations/{id}/end_wait]
 
-Shown that the Driver ended wait to the passenger
+Shows that the Driver ended wait to the passenger
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2531,7 +2533,7 @@ Shown that the Driver ended wait to the passenger
 
 ### PickUp Passenger [POST /companies/{company_alias}/reservations/{id}/pick_up_passenger]
 
-Shown that the driver picked up the passenger
+Shows that the driver picked up the passenger
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2558,7 +2560,7 @@ Shown that the driver picked up the passenger
 
 ### DropOff Passenger [POST /companies/{company_alias}/reservations/{id}/drop_off_passenger]
 
-Shown that the driver delivered the passenger to the destination
+Shows that the driver delivered the passenger to the destination
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2667,7 +2669,7 @@ Cancel reservation
             
 ### Cancel by Passenger [POST /companies/{company_alias}/reservations/{id}/cancel_by_passenger]
 
-Cancels reservation by passenger
+Cancel reservation by passenger
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2694,7 +2696,7 @@ Cancels reservation by passenger
             
 ### Cancel by Affiliate [POST /companies/{company_alias}/reservations/{id}/cancel_by_affiliate]
 
-Cancels reservation by affiliate
+Cancel reservation by affiliate
 
 + Parameters
     + company_alias: limotest1 (required, string)
