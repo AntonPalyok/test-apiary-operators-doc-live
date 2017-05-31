@@ -2425,7 +2425,7 @@ Shows that the driver is on the way to pickup location
          
 ### Arrive at Pickup [POST /companies/{company_alias}/reservations/{id}/arrive_at_pickup]
 
-Shows that the driver is arrived at pickup location
+Shows that the driver has arrived at pickup location
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2479,7 +2479,7 @@ Shows that the driver is circling on pickup location
          
 ### Start Wait [POST /companies/{company_alias}/reservations/{id}/start_wait]
 
-Shows that the Driver started wait to the passenger
+Shows that the Driver started waiting for the passenger
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2506,7 +2506,7 @@ Shows that the Driver started wait to the passenger
 
 ### End Wait [POST /companies/{company_alias}/reservations/{id}/end_wait]
 
-Shows that the Driver ended wait to the passenger
+Shows that the Driver driver stopped waiting for the passenger.
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -2747,34 +2747,7 @@ Close reservation
     + Body
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
-            
-### Delete [POST /companies/{company_alias}/reservations/{id}/delete]
-
-Delete reservation
-
-+ Parameters
-    + company_alias: limotest1 (required, string)
-    + id: 1 (int, required)
-
-+ Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
-
-    + Headers
-
-            Content-Type: application/json
-            Authorization: bearer {access_token}
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json
-
-    + Body
-
-            {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
-            
+        
 ### No Show [POST /companies/{company_alias}/reservations/{id}/no_show]
 
 Sets when passenger did not arrive to pickup location
