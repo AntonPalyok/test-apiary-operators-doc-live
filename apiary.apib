@@ -2308,36 +2308,6 @@ Reject offered reservation
             
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
 
-### Convert [POST /companies/{company_alias}/reservations/{id}/convert]
-
-Convert quote to live reservation
-
-+ Parameters
-
-    + company_alias: limotest1 (required, string)
-    + id: 1 (int, required)
-
-+ Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
-
-    + Headers
-
-            Content-Type: application/json
-            Authorization: bearer {access_token}
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json
-
-    + Body
-            
-            {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
-
-
 ### Assign [POST /companies/{company_alias}/reservations/{id}/assign]
 
 Assign reservation to driver
@@ -2589,33 +2559,6 @@ Shows that the driver delivered the passenger to the destination
 ### Restore [POST /companies/{company_alias}/reservations/{id}/restore]
 
 Restore reservation after deleting 
-
-+ Parameters
-    + company_alias: limotest1 (required, string)
-    + id: 1 (int, required)
-
-+ Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
-
-    + Headers
-
-            Content-Type: application/json
-            Authorization: bearer {access_token}
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json
-
-    + Body
-
-            {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
-            
-### Retract [POST /companies/{company_alias}/reservations/{id}/retract]
-
-Retract reservation 
 
 + Parameters
     + company_alias: limotest1 (required, string)
