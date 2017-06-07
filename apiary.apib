@@ -281,6 +281,52 @@ Returns the Payment Type by Id.
     + Body
 
         { "id": 1, "name":"sample string", "type": "other", "is_active":true }
+  
+## Payment Gateways [/payment_gateways]
+The available Payment Gateways for company.
+
+### Get Collection [GET /companies/{company_alias}/resources/payment_gateways?page_index={page_index}&page_size={page_size}]
+Returns a paged collection of Payment Gateways.
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request
+
++ Headers
+
+        Content-Type: application/json
+        Authorization: bearer {access_token}
++ Response 200
+
+    + Headers
+        Content-Type: application/json
+
+    + Body
+        {"total_count": 2,"items": [{"id": 1,"name": "sample string 1","code": "sample string 2","parameter1": "sample string 3","parameter2": "sample string 4","parameter3": "sample string 5","parameter4": "sample string 6"},{"id": 3,"name": "sample string 7","code": "sample string 8","parameter1": "sample string 9","parameter2": "sample string 10","parameter3": "sample string 11","parameter4": "sample string 12"}]}
+
+### Get By Id [GET /companies/{company_alias}/resources/payment_gateways/{id}]
+Returns the Payment Gateway by Id.
++ Parameters
+    + company_alias: limotest1 (required, string)
+    + id: `1` (required, int)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+        Content-Type: application/json
+            
+    + Body
+       {"id": 1,"name": "sample string 1","code": "sample string 2","parameter1": "sample string 3","parameter2": "sample string 4","parameter3": "sample string 5","parameter4": "sample string 6"}
         
 ## Vehicle Types [/vehicle_types] 
 The available Vehicle Types for company.
