@@ -2780,3 +2780,746 @@ Change reservation status without changing reservation state
 
             Content-Type: application/json
             Authorization: bearer {access_token}
+            
+## Group Customer Accounts 
+Provides operations with Customer Accounts. 
+
+## Get Customer Account [/GetCustomerAccountAsync]
+
+### Get By Id [GET /companies/{company_alias}/customers/{id}] 
+
++ Parameters 
+    + id: `1` (required, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "id": 1002334155,
+  "account_number": "30257",
+  "email": "email@sample.com",
+  "partner_consumer_id": 1,
+  "prefix": "Mr.",
+  "first_name": "Jerry",
+  "last_name": "Harris",
+  "billing_contact_account_id": 1002333256,
+  "billing_contact_account": {
+    "first_name": "David",
+    "last_name": "Stewart",
+    "email": "email@sample.com",
+    "phone": "+380930000000"
+  },
+  "department": "communications",
+  "position": "office manager",
+  "billing_address": {
+    "country_code": "US",
+    "state_code": "NY",
+    "postal_code": "11354",
+    "county": "Nassau",
+    "city": "Queens",
+    "address_line1": "123 Main St",
+    "address_line2": "apt. 26"
+  },
+  "home_phone": "+380930000045",
+  "office_phone": "+380930000034",
+  "cellular_phone1": "+380930000012",
+  "cellular_phone2": "+380930000001",
+  "cellular_phone3": "+380930000056",
+  "fax1": "+380930000123",
+  "fax2": "+380930000124",
+  "is_billing_contact": true,
+  "is_booking_contact": true,
+  "is_passenger": true,
+  "is_active": true,
+  "is_locked": false,
+  "default_credit_card_id": 12341235,
+    "default_credit_card": {
+    "holder_name": "Jerry Harris",
+    "holder_type": "personal",
+    "card_number_first_digit": "1",
+    "card_number_last_digits": "4556",
+    "card_network": "other",
+    "expiration_year": 2020,
+    "expiration_month": 5
+  },
+  "default_payment_type_id": 1,
+  "default_payment_type": {
+    "name": "Credit Card",
+    "code": "CC",
+    "method": "other"
+  },
+  "payment_terms": "10.00:00:00",
+  "internal_notes": "sample notes",
+  "preferences_notes": "sample notes",
+  "driver_notes": "sample notes",
+  "default_rental_agreement_id": 145,
+  "default_rental_agreement": {
+    "name": "Default rental agreement"
+  },
+  "default_primary_agent_id": 1,
+  "default_primary_agent_reward": {
+    "type": "percentage",
+    "amount": 1.0
+  },
+  "default_primary_agent": {
+    "first_name": "Richard",
+    "last_name": "Goodwin",
+    "email": "email@sample.com",
+    "phone": "+380990000367"
+  },
+  "default_secondary_agent_id": 1,
+  "default_secondary_agent_reward": {
+    "type": "percentage",
+    "amount": 1.0
+  },
+    "default_secondary_agent": {
+    "first_name": "Christina",
+    "last_name": "Brady",
+    "email": "email@sample.com",
+    "phone": "+380950000382"
+  },
+  "created_at": "2017-06-08T16:19:34+03:00",
+  "created_by": "admin",
+  "updated_at": "2017-08-10T18:10:34+03:00",
+  "updated_by": "admin"
+}
+
+## Search Customer Accounts [/GetCustomerAccountsAsync]
+Returns Paged Collection of Customer Accounts. 
+
+### Get Customer Accounts [GET /companies/{company_alias}/customers?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + billing_contact_id: (optional, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Billing Contacts [GET /companies/{company_alias}/customers/billing_contacts?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + billing_contact_id: (optional, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Booking Contacts [GET /companies/{company_alias}/customers/booking_contacts?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + billing_contact_id: (optional, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Booking Contact's Passengers [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/passengers?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + booking_contact_id: (required, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Booking Contact's Billing Contacts [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/billing_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + booking_contact_id: (required, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Passengers [GET /companies/{company_alias}/customers/passengers?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + billing_contact_id: (optional, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Passenger's Booking Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/booking_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + passenger_id: (required, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
+
+### Get Passenger's Billing Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/billing_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+
++ Parameters 
+    + passenger_id: (required, int)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + is_active: true (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "total_count": 1,
+  "items": [
+    {
+      "id": 1002334155,
+      "account_number": "30257",
+      "prefix": "Mr.",
+      "first_name": "Jerry",
+      "last_name": "Harris",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-06-08T16:19:34+03:00",
+      "created_by": "admin"
+    },
+    {
+      "id": 1002334156,
+      "account_number": "30258",
+      "prefix": "Mrs.",
+      "first_name": "Christina",
+      "last_name": "Brady",
+      "email": "email@sample.com",
+      "billing_contact_account_id": 1002333256,
+      "billing_contact_account": {
+        "first_name": "David",
+        "last_name": "Stewart",
+        "email": "email@sample.com",
+        "phone": "+380930000000"
+      },
+      "is_billing_contact": true,
+      "is_booking_contact": true,
+      "is_passenger": true,
+      "is_active": true,
+      "is_locked": false,
+      "created_at": "2017-08-10T18:21:34+03:00",
+      "created_by": "admin"
+    }
+  ]
+}
