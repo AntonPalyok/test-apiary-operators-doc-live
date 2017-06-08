@@ -305,7 +305,7 @@ Returns a paged collection of Payment Gateways.
         Content-Type: application/json
 
     + Body
-        {"total_count": 2,"items": [{"id": 1,"name": "sample string 1","code": "sample string 2","parameter1": "sample string 3","parameter2": "sample string 4","parameter3": "sample string 5","parameter4": "sample string 6"},{"id": 3,"name": "sample string 7","code": "sample string 8","parameter1": "sample string 9","parameter2": "sample string 10","parameter3": "sample string 11","parameter4": "sample string 12"}]}
+        {"total_count":2,"items":[{"id":1,"name":"sample string 1"},{"id":2,"name": "sample string 2"}]}
 
 ### Get By Id [GET /companies/{company_alias}/resources/payment_gateways/{id}]
 Returns the Payment Gateway by Id.
@@ -324,10 +324,10 @@ Returns the Payment Gateway by Id.
 
     + Headers
         Content-Type: application/json
-            
-    + Body
-       {"id": 1,"name": "sample string 1","code": "sample string 2","parameter1": "sample string 3","parameter2": "sample string 4","parameter3": "sample string 5","parameter4": "sample string 6"}
         
+    + Body
+       {"id": 1,"name": "sample string 1","gateway": "sample string 2","parameter1": "sample string 3","parameter2": "sample string 4","parameter3": "sample string 5","parameter4": "sample string 6"}
+       
 ## Vehicle Types [/vehicle_types] 
 The available Vehicle Types for company.
 
