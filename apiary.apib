@@ -1750,7 +1750,8 @@ Use `search_for` parameter to filter results by airport Iata code or name.
 
 
 
-### Get Live Reservations [GET /companies/{company_alias}/reservations/live?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+### Get New Reservations [GET /companies/{company_alias}/reservations/new?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of reservations with states: created, unassigned.
 
 + Parameters 
     + from: (optional, string)
@@ -1865,8 +1866,8 @@ Use `search_for` parameter to filter results by airport Iata code or name.
 
 
 
-### Get Dispatched Reservations [GET /companies/{company_alias}/reservations/dispatch?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
-
+### Get In Progress Reservations [GET /companies/{company_alias}/reservations/in_progress?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of reservations with states: offered, accepted, assigned, driver_is_on_the_way, driver_is_at_pickup, driver_is_circling, driver_is_waiting_at_pickup, driver_is_waiting_for_passenger, driving_passenger, driver_is_closing_job.
 + Parameters 
     + from: (optional, string)
     + to: (optional, string)
@@ -1980,8 +1981,8 @@ Use `search_for` parameter to filter results by airport Iata code or name.
 
 
 
-### Get Settled Reservations [GET /companies/{company_alias}/reservations/settle?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
-
+### Get Done Reservations [GET /companies/{company_alias}/reservations/done?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of reservations with states: closed_by_driver, closed, cancelled.
 + Parameters 
     + from: (optional, string)
     + to: (optional, string)
