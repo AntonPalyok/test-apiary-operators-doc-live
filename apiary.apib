@@ -730,6 +730,60 @@ Use `search_for` parameter to filter results by seaport code or name.
 
 {"total_count":2,"items":[{"id":1,"code":"sample string 1","name":"sample string 2","address":{"name":"sample string 3","country_code":"sample string 4","state_code":"sample string 5","postal_code": "sample string 6","city":"sample string 7","address_line1":"sample string 8","address_line2":"sample string 9"},"location":{"latitude": 1.1,"longitude": 2.1}},{"id":2,"code": "sample string 10","name": "sample string 11","address":{"name":"sample string 12","country_code":"sample string 13","state_code":"sample string 14","postal_code":"sample string 15","city":"sample string 16","address_line1": "sample string 17","address_line2":"sample string 18"},"location":{"latitude":1.1,"longitude":2.1}}]}
 
+
+## Private Airlines [/fbos]
+Provides read operations for Private Airlines.
+
+### Get Collection [GET /companies/{company_alias}/resources/fbos?is_active={is_active}&search_for={search_for}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of Private Airlines.
+Use `search_for` parameter to filter results by Airport Iata code or Airline Name.
+
++ Parameters 
+    + company_alias: (required, string)
+    + search_for: (optional, string)
+    + is_active: true (optional, boolean)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{"total_count":2,"items":[{"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 3","country_code":"sample string 4","state_code":"sample string 5","postal_code": "sample string 6","city":"sample string 7","address_line1":"sample string 8","address_line2":"sample string 9"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true},{"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 12","country_code":"sample string 13","state_code":"sample string 14","postal_code":"sample string 15","city":"sample string 16","address_line1": "sample string 17","address_line2":"sample string 18"},"location":{"latitude":1.1,"longitude":2.1},"is_active":true}]}
+
+### Get By Id [GET /companies/{company_alias}/resources/fbos?{id}] 
+Returns Private Airline by Id.
+ 
++ Parameters
+    + id: `1` (required, int)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+            Content-Type: application/json
+
+    + Body
+            {"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 3","country_code":"sample string 4","state_code":"sample string 5","postal_code": "sample string 6","city":"sample string 7","address_line1":"sample string 8","address_line2":"sample string 9"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true}
+
+
 ## Group Reservations
 
 ### Get Reservation [GET /companies/{company_alias}/reservations/{id}] 
