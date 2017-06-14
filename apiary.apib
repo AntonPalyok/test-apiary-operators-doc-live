@@ -784,6 +784,39 @@ Returns Private Airline by Id.
             {"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 3","country_code":"sample string 4","state_code":"sample string 5","postal_code": "sample string 6","city":"sample string 7","address_line1":"sample string 8","address_line2":"sample string 9"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true}
 
 
+## Points of Interest [/pois]
+Provides read operations for Points of Interest.
+
+### Get Collection [GET /companies/{company_alias}/resources/pois?search_for={search_for}&type={type}&is_active={is_active}&page_index={page_index}&page_size={page_size}] 
+Returns paged collection of Points of Interest.
+Use `search_for` parameter to filter results by Point Name.
+Use `type` parameter to filter results by Point Type.
+
++ Parameters 
+    + company_alias: (required, string)
+    + search_for: (optional, string)
+    + type: (optional, string)
+    + is_active: true (optional, boolean)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{"total_count":2,"items":[{"id":1,"name":"sample string 1","type_id":2,"type":{"name":"sample string 2"},"phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 5","country_code":"sample string 6","state_code":"sample string 7","postal_code": "sample string 8","city":"sample string 9","address_line1":"sample string 10","address_line2":"sample string 11"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true},{"id":2,"name":"sample string 12","type_id":3,"type":{"name":"sample string 2"},"phone":"sample string 13","instructions":"sample string 14","address":{"name":"sample string 15","country_code":"sample string 16","state_code":"sample string 17","postal_code": "sample string 18","city":"sample string 19","address_line1":"sample string 20","address_line2":"sample string 21"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true}]}
+
 ## Group Reservations
 
 ## Get Reservations  [/Reservation/get]
