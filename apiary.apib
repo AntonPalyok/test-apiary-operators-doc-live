@@ -786,6 +786,8 @@ Returns Private Airline by Id.
 
 ## Group Reservations
 
+## Get Reservations  [/Reservation/get]
+
 ### Get Reservation [GET /companies/{company_alias}/reservations/{id}] 
 
 + Parameters 
@@ -1014,7 +1016,466 @@ Returns Private Airline by Id.
   "confirmation_on_update": "email"
 }
 
+### Get New Reservations [GET /companies/{company_alias}/reservations/new?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
 
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+            {
+              "total_count": 1,
+              "items": [
+                {
+                  "id": 57414239,
+                  "confirmation_number": "39666",
+                  "scheduled_pickup_at": "2017-04-14T18:27:00",
+                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+                  "state": "unassigned",
+                  "state_reason": "undefined",
+                  "pickup": {
+                    "name": "Name of Address",
+                    "scheduled_arrival_at": "2017-04-15T12:54:00",
+                    "action": "pickup",
+                    "notes": "pickup notes",
+                    "address": {
+                      "country_code": "US",
+                      "state_code": "NY",
+                      "postal_code": "11354",
+                      "city": "Queens",
+                      "address_line1": "123 Main St"
+                    },
+                    "location": {
+                      "latitude": 40.7624474,
+                      "longitude": -73.83165
+                    }
+                  },
+                  "dropoff": {
+                    "name": "John F. Kennedy International Airport",
+                    "scheduled_arrival_at": "2017-04-15T07:03:00",
+                    "action": "dropoff",
+                    "address": {
+                      "state_code": "NY"
+                    },
+                    "flight": {
+                      "airport_code": "JFK",
+                      "airline_code": "AA",
+                      "flight_number": "9070",
+                      "tail_number": "A7-E3",
+                      "terminal": "4",
+                      "gateway": "A7",
+                      "meet_option": "curbside",
+                      "departs_from_or_arrives_to": "AUH",
+                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+                    },
+                    "location": {
+                      "latitude": 40.63975,
+                      "longitude": -73.77892
+                    }
+                  },
+                  "primary_driver_id": 138,
+                  "primary_driver": {
+                    "first_name": "William",
+                    "last_name": "Vegas"
+                  },
+                  "primary_car_id": 75,
+                  "primary_car": {
+                    "license_plate": "LAL 44",
+                    "car_make": "Lincoln",
+                    "color": "BLACK"
+                  },
+                  "passenger_account_id": 1002334155,
+                  "passenger": {
+                    "first_name": "Issue",
+                    "last_name": "314",
+                    "email": "email@sample.com",
+                    "phone": "+380930000000"
+                  },
+                  "total_amount": 196.89,
+                  "payment_type_id": 1,
+                  "payment_type": {
+                    "name": "Credit Card",
+                    "method": "other"
+                  },
+                  "vehicle_type_id": 14421,
+                  "vehicle_type": {
+                    "name": "BMW"
+                  },
+                  "created_at": "2017-04-14T18:25:09",
+                  "created_by": "admin"
+                }
+              ]
+            }
+
+
+
+### Get In Progress Reservations [GET /companies/{company_alias}/reservations/in_progress?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+            {
+              "total_count": 1,
+              "items": [
+                {
+                  "id": 57414239,
+                  "confirmation_number": "39666",
+                  "scheduled_pickup_at": "2017-04-14T18:27:00",
+                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+                  "state": "assigned",
+                  "state_reason": "undefined",
+                  "pickup": {
+                    "name": "Name of Address",
+                    "scheduled_arrival_at": "2017-04-15T12:54:00",
+                    "action": "pickup",
+                    "notes": "pickup notes",
+                    "address": {
+                      "country_code": "US",
+                      "state_code": "NY",
+                      "postal_code": "11354",
+                      "city": "Queens",
+                      "address_line1": "123 Main St"
+                    },
+                    "location": {
+                      "latitude": 40.7624474,
+                      "longitude": -73.83165
+                    }
+                  },
+                  "dropoff": {
+                    "name": "John F. Kennedy International Airport",
+                    "scheduled_arrival_at": "2017-04-15T07:03:00",
+                    "action": "dropoff",
+                    "address": {
+                      "state_code": "NY"
+                    },
+                    "flight": {
+                      "airport_code": "JFK",
+                      "airline_code": "AA",
+                      "flight_number": "9070",
+                      "tail_number": "A7-E3",
+                      "terminal": "4",
+                      "gateway": "A7",
+                      "meet_option": "curbside",
+                      "departs_from_or_arrives_to": "AUH",
+                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+                    },
+                    "location": {
+                      "latitude": 40.63975,
+                      "longitude": -73.77892
+                    }
+                  },
+                  "primary_driver_id": 138,
+                  "primary_driver": {
+                    "first_name": "William",
+                    "last_name": "Vegas"
+                  },
+                  "primary_car_id": 75,
+                  "primary_car": {
+                    "license_plate": "LAL 44",
+                    "car_make": "Lincoln",
+                    "color": "BLACK"
+                  },
+                  "passenger_account_id": 1002334155,
+                  "passenger": {
+                    "first_name": "Issue",
+                    "last_name": "314",
+                    "email": "email@sample.com",
+                    "phone": "+380930000000"
+                  },
+                  "total_amount": 196.89,
+                  "payment_type_id": 1,
+                  "payment_type": {
+                    "name": "Credit Card",
+                    "method": "other"
+                  },
+                  "vehicle_type_id": 14421,
+                  "vehicle_type": {
+                    "name": "BMW"
+                  },
+                  "created_at": "2017-04-14T18:25:09",
+                  "created_by": "admin"
+                }
+              ]
+            }
+
+
+
+### Get Done Reservations [GET /companies/{company_alias}/reservations/done?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
+
++ Parameters 
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+            {
+              "total_count": 1,
+              "items": [
+                {
+                  "id": 57414239,
+                  "confirmation_number": "39666",
+                  "scheduled_pickup_at": "2017-04-14T18:27:00",
+                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+                  "state": "closed",
+                  "state_reason": "undefined",
+                  "pickup": {
+                    "name": "Name of Address",
+                    "scheduled_arrival_at": "2017-04-15T12:54:00",
+                    "action": "pickup",
+                    "notes": "pickup notes",
+                    "address": {
+                      "country_code": "US",
+                      "state_code": "NY",
+                      "postal_code": "11354",
+                      "city": "Queens",
+                      "address_line1": "123 Main St"
+                    },
+                    "location": {
+                      "latitude": 40.7624474,
+                      "longitude": -73.83165
+                    }
+                  },
+                  "dropoff": {
+                    "name": "John F. Kennedy International Airport",
+                    "scheduled_arrival_at": "2017-04-15T07:03:00",
+                    "action": "dropoff",
+                    "address": {
+                      "state_code": "NY"
+                    },
+                    "flight": {
+                      "airport_code": "JFK",
+                      "airline_code": "AA",
+                      "flight_number": "9070",
+                      "tail_number": "A7-E3",
+                      "terminal": "4",
+                      "gateway": "A7",
+                      "meet_option": "curbside",
+                      "departs_from_or_arrives_to": "AUH",
+                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+                    },
+                    "location": {
+                      "latitude": 40.63975,
+                      "longitude": -73.77892
+                    }
+                  },
+                  "primary_driver_id": 138,
+                  "primary_driver": {
+                    "first_name": "William",
+                    "last_name": "Vegas"
+                  },
+                  "primary_car_id": 75,
+                  "primary_car": {
+                    "license_plate": "LAL 44",
+                    "car_make": "Lincoln",
+                    "color": "BLACK"
+                  },
+                  "passenger_account_id": 1002334155,
+                  "passenger": {
+                    "first_name": "Issue",
+                    "last_name": "314",
+                    "email": "email@sample.com",
+                    "phone": "+380930000000"
+                  },
+                  "total_amount": 196.89,
+                  "payment_type_id": 1,
+                  "payment_type": {
+                    "name": "Credit Card",
+                    "method": "other"
+                  },
+                  "vehicle_type_id": 14421,
+                  "vehicle_type": {
+                    "name": "BMW"
+                  },
+                  "created_at": "2017-04-14T18:25:09",
+                  "created_by": "admin"
+                }
+              ]
+            }
+
+
+
+### Get Rejected Reservations [GET /companies/{company_alias}/reservations/rejected?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}]
+
++ Parameters
+    + from: (optional, string)
+    + to: (optional, string)
+    + search_in: (optional, string)
+    + search_for: (optional, string)
+    + is_paid: (optional, boolean)
+    + sort_by: (optional, string)
+    + sort_order: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+    + company_alias: (required, string)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "total_count": 1,
+              "items": [
+                {
+                  "id": 57414239,
+                  "confirmation_number": "39666",
+                  "scheduled_pickup_at": "2017-04-14T18:27:00",
+                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
+                  "state": "unassigned",
+                  "state_reason": "rejected_by_driver",
+                  "pickup": {
+                    "name": "Name of Address",
+                    "scheduled_arrival_at": "2017-04-15T12:54:00",
+                    "action": "pickup",
+                    "notes": "pickup notes",
+                    "address": {
+                      "country_code": "US",
+                      "state_code": "NY",
+                      "postal_code": "11354",
+                      "city": "Queens",
+                      "address_line1": "123 Main St"
+                    },
+                    "location": {
+                      "latitude": 40.7624474,
+                      "longitude": -73.83165
+                    }
+                  },
+                  "dropoff": {
+                    "name": "John F. Kennedy International Airport",
+                    "scheduled_arrival_at": "2017-04-15T07:03:00",
+                    "action": "dropoff",
+                    "address": {
+                      "state_code": "NY"
+                    },
+                    "flight": {
+                      "airport_code": "JFK",
+                      "airline_code": "AA",
+                      "flight_number": "9070",
+                      "tail_number": "A7-E3",
+                      "terminal": "4",
+                      "gateway": "A7",
+                      "meet_option": "curbside",
+                      "departs_from_or_arrives_to": "AUH",
+                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
+                    },
+                    "location": {
+                      "latitude": 40.63975,
+                      "longitude": -73.77892
+                    }
+                  },
+                  "primary_driver_id": 138,
+                  "primary_driver": {
+                    "first_name": "William",
+                    "last_name": "Vegas"
+                  },
+                  "primary_car_id": 75,
+                  "primary_car": {
+                    "license_plate": "LAL 44",
+                    "car_make": "Lincoln",
+                    "color": "BLACK"
+                  },
+                  "passenger_account_id": 1002334155,
+                  "passenger": {
+                    "first_name": "Issue",
+                    "last_name": "314",
+                    "email": "email@sample.com",
+                    "phone": "+380930000000"
+                  },
+                  "total_amount": 196.89,
+                  "payment_type_id": 1,
+                  "payment_type": {
+                    "name": "Credit Card",
+                    "method": "other"
+                  },
+                  "vehicle_type_id": 14421,
+                  "vehicle_type": {
+                    "name": "BMW"
+                  },
+                  "created_at": "2017-04-14T18:25:09",
+                  "created_by": "admin"
+                }
+              ]
+            }
+            
+
+## Create Reservation  [/Reservation/create]
 
 ### Create Reservation [POST /companies/{company_alias}/reservations] 
 
@@ -1530,7 +1991,7 @@ Returns Private Airline by Id.
   "confirmation_on_update": "email"
 }
 
-
+## Update Reservation  [/Reservation/update]
 
 ### Update Reservation [PUT /companies/{company_alias}/reservations/{id}] 
 
@@ -1832,466 +2293,6 @@ Returns Private Airline by Id.
   "confirmation_on_update": "email"
 }
 
-
-
-### Get New Reservations [GET /companies/{company_alias}/reservations/new?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
-
-+ Parameters 
-    + from: (optional, string)
-    + to: (optional, string)
-    + search_in: (optional, string)
-    + search_for: (optional, string)
-    + is_paid: (optional, boolean)
-    + sort_by: (optional, string)
-    + sort_order: (optional, string)
-    + page_index: 1 (optional, int)
-    + page_size: 20 (optional, int)
-    + company_alias: (required, string)
-
-+ Request 
-
-    + Headers 
-
-            Content-Type: application/json 
-            Authorization: bearer {access_token}
-
-+ Response 200 
-
-    + Headers 
-
-            Content-Type: application/json 
-
-    + Body 
-
-            {
-              "total_count": 1,
-              "items": [
-                {
-                  "id": 57414239,
-                  "confirmation_number": "39666",
-                  "scheduled_pickup_at": "2017-04-14T18:27:00",
-                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
-                  "state": "unassigned",
-                  "state_reason": "undefined",
-                  "pickup": {
-                    "name": "Name of Address",
-                    "scheduled_arrival_at": "2017-04-15T12:54:00",
-                    "action": "pickup",
-                    "notes": "pickup notes",
-                    "address": {
-                      "country_code": "US",
-                      "state_code": "NY",
-                      "postal_code": "11354",
-                      "city": "Queens",
-                      "address_line1": "123 Main St"
-                    },
-                    "location": {
-                      "latitude": 40.7624474,
-                      "longitude": -73.83165
-                    }
-                  },
-                  "dropoff": {
-                    "name": "John F. Kennedy International Airport",
-                    "scheduled_arrival_at": "2017-04-15T07:03:00",
-                    "action": "dropoff",
-                    "address": {
-                      "state_code": "NY"
-                    },
-                    "flight": {
-                      "airport_code": "JFK",
-                      "airline_code": "AA",
-                      "flight_number": "9070",
-                      "tail_number": "A7-E3",
-                      "terminal": "4",
-                      "gateway": "A7",
-                      "meet_option": "curbside",
-                      "departs_from_or_arrives_to": "AUH",
-                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
-                    },
-                    "location": {
-                      "latitude": 40.63975,
-                      "longitude": -73.77892
-                    }
-                  },
-                  "primary_driver_id": 138,
-                  "primary_driver": {
-                    "first_name": "William",
-                    "last_name": "Vegas"
-                  },
-                  "primary_car_id": 75,
-                  "primary_car": {
-                    "license_plate": "LAL 44",
-                    "car_make": "Lincoln",
-                    "color": "BLACK"
-                  },
-                  "passenger_account_id": 1002334155,
-                  "passenger": {
-                    "first_name": "Issue",
-                    "last_name": "314",
-                    "email": "email@sample.com",
-                    "phone": "+380930000000"
-                  },
-                  "total_amount": 196.89,
-                  "payment_type_id": 1,
-                  "payment_type": {
-                    "name": "Credit Card",
-                    "method": "other"
-                  },
-                  "vehicle_type_id": 14421,
-                  "vehicle_type": {
-                    "name": "BMW"
-                  },
-                  "created_at": "2017-04-14T18:25:09",
-                  "created_by": "admin"
-                }
-              ]
-            }
-
-
-
-### Get In Progress Reservations [GET /companies/{company_alias}/reservations/in_progress?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
-
-+ Parameters 
-    + from: (optional, string)
-    + to: (optional, string)
-    + search_in: (optional, string)
-    + search_for: (optional, string)
-    + is_paid: (optional, boolean)
-    + sort_by: (optional, string)
-    + sort_order: (optional, string)
-    + page_index: 1 (optional, int)
-    + page_size: 20 (optional, int)
-    + company_alias: (required, string)
-
-+ Request 
-
-    + Headers 
-
-            Content-Type: application/json 
-            Authorization: bearer {access_token}
-
-+ Response 200 
-
-    + Headers 
-
-            Content-Type: application/json 
-
-    + Body 
-
-            {
-              "total_count": 1,
-              "items": [
-                {
-                  "id": 57414239,
-                  "confirmation_number": "39666",
-                  "scheduled_pickup_at": "2017-04-14T18:27:00",
-                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
-                  "state": "assigned",
-                  "state_reason": "undefined",
-                  "pickup": {
-                    "name": "Name of Address",
-                    "scheduled_arrival_at": "2017-04-15T12:54:00",
-                    "action": "pickup",
-                    "notes": "pickup notes",
-                    "address": {
-                      "country_code": "US",
-                      "state_code": "NY",
-                      "postal_code": "11354",
-                      "city": "Queens",
-                      "address_line1": "123 Main St"
-                    },
-                    "location": {
-                      "latitude": 40.7624474,
-                      "longitude": -73.83165
-                    }
-                  },
-                  "dropoff": {
-                    "name": "John F. Kennedy International Airport",
-                    "scheduled_arrival_at": "2017-04-15T07:03:00",
-                    "action": "dropoff",
-                    "address": {
-                      "state_code": "NY"
-                    },
-                    "flight": {
-                      "airport_code": "JFK",
-                      "airline_code": "AA",
-                      "flight_number": "9070",
-                      "tail_number": "A7-E3",
-                      "terminal": "4",
-                      "gateway": "A7",
-                      "meet_option": "curbside",
-                      "departs_from_or_arrives_to": "AUH",
-                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
-                    },
-                    "location": {
-                      "latitude": 40.63975,
-                      "longitude": -73.77892
-                    }
-                  },
-                  "primary_driver_id": 138,
-                  "primary_driver": {
-                    "first_name": "William",
-                    "last_name": "Vegas"
-                  },
-                  "primary_car_id": 75,
-                  "primary_car": {
-                    "license_plate": "LAL 44",
-                    "car_make": "Lincoln",
-                    "color": "BLACK"
-                  },
-                  "passenger_account_id": 1002334155,
-                  "passenger": {
-                    "first_name": "Issue",
-                    "last_name": "314",
-                    "email": "email@sample.com",
-                    "phone": "+380930000000"
-                  },
-                  "total_amount": 196.89,
-                  "payment_type_id": 1,
-                  "payment_type": {
-                    "name": "Credit Card",
-                    "method": "other"
-                  },
-                  "vehicle_type_id": 14421,
-                  "vehicle_type": {
-                    "name": "BMW"
-                  },
-                  "created_at": "2017-04-14T18:25:09",
-                  "created_by": "admin"
-                }
-              ]
-            }
-
-
-
-### Get Done Reservations [GET /companies/{company_alias}/reservations/done?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}] 
-
-+ Parameters 
-    + from: (optional, string)
-    + to: (optional, string)
-    + search_in: (optional, string)
-    + search_for: (optional, string)
-    + is_paid: (optional, boolean)
-    + sort_by: (optional, string)
-    + sort_order: (optional, string)
-    + page_index: 1 (optional, int)
-    + page_size: 20 (optional, int)
-    + company_alias: (required, string)
-
-+ Request 
-
-    + Headers 
-
-            Content-Type: application/json 
-            Authorization: bearer {access_token}
-
-+ Response 200 
-
-    + Headers 
-
-            Content-Type: application/json 
-
-    + Body 
-
-            {
-              "total_count": 1,
-              "items": [
-                {
-                  "id": 57414239,
-                  "confirmation_number": "39666",
-                  "scheduled_pickup_at": "2017-04-14T18:27:00",
-                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
-                  "state": "closed",
-                  "state_reason": "undefined",
-                  "pickup": {
-                    "name": "Name of Address",
-                    "scheduled_arrival_at": "2017-04-15T12:54:00",
-                    "action": "pickup",
-                    "notes": "pickup notes",
-                    "address": {
-                      "country_code": "US",
-                      "state_code": "NY",
-                      "postal_code": "11354",
-                      "city": "Queens",
-                      "address_line1": "123 Main St"
-                    },
-                    "location": {
-                      "latitude": 40.7624474,
-                      "longitude": -73.83165
-                    }
-                  },
-                  "dropoff": {
-                    "name": "John F. Kennedy International Airport",
-                    "scheduled_arrival_at": "2017-04-15T07:03:00",
-                    "action": "dropoff",
-                    "address": {
-                      "state_code": "NY"
-                    },
-                    "flight": {
-                      "airport_code": "JFK",
-                      "airline_code": "AA",
-                      "flight_number": "9070",
-                      "tail_number": "A7-E3",
-                      "terminal": "4",
-                      "gateway": "A7",
-                      "meet_option": "curbside",
-                      "departs_from_or_arrives_to": "AUH",
-                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
-                    },
-                    "location": {
-                      "latitude": 40.63975,
-                      "longitude": -73.77892
-                    }
-                  },
-                  "primary_driver_id": 138,
-                  "primary_driver": {
-                    "first_name": "William",
-                    "last_name": "Vegas"
-                  },
-                  "primary_car_id": 75,
-                  "primary_car": {
-                    "license_plate": "LAL 44",
-                    "car_make": "Lincoln",
-                    "color": "BLACK"
-                  },
-                  "passenger_account_id": 1002334155,
-                  "passenger": {
-                    "first_name": "Issue",
-                    "last_name": "314",
-                    "email": "email@sample.com",
-                    "phone": "+380930000000"
-                  },
-                  "total_amount": 196.89,
-                  "payment_type_id": 1,
-                  "payment_type": {
-                    "name": "Credit Card",
-                    "method": "other"
-                  },
-                  "vehicle_type_id": 14421,
-                  "vehicle_type": {
-                    "name": "BMW"
-                  },
-                  "created_at": "2017-04-14T18:25:09",
-                  "created_by": "admin"
-                }
-              ]
-            }
-
-
-
-### Get Rejected Reservations [GET /companies/{company_alias}/reservations/rejected?from={from}&to={to}&search_in={search_in}&search_for={search_for}&is_paid={is_paid}&sort_by={sort_by}&sort_order={sort_order}&page_index={page_index}&page_size={page_size}]
-
-+ Parameters
-    + from: (optional, string)
-    + to: (optional, string)
-    + search_in: (optional, string)
-    + search_for: (optional, string)
-    + is_paid: (optional, boolean)
-    + sort_by: (optional, string)
-    + sort_order: (optional, string)
-    + page_index: 1 (optional, int)
-    + page_size: 20 (optional, int)
-    + company_alias: (required, string)
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/json
-            Authorization: bearer {access_token}
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json
-
-    + Body
-
-            {
-              "total_count": 1,
-              "items": [
-                {
-                  "id": 57414239,
-                  "confirmation_number": "39666",
-                  "scheduled_pickup_at": "2017-04-14T18:27:00",
-                  "scheduled_dropoff_at": "2017-04-14T20:16:00",
-                  "state": "unassigned",
-                  "state_reason": "rejected_by_driver",
-                  "pickup": {
-                    "name": "Name of Address",
-                    "scheduled_arrival_at": "2017-04-15T12:54:00",
-                    "action": "pickup",
-                    "notes": "pickup notes",
-                    "address": {
-                      "country_code": "US",
-                      "state_code": "NY",
-                      "postal_code": "11354",
-                      "city": "Queens",
-                      "address_line1": "123 Main St"
-                    },
-                    "location": {
-                      "latitude": 40.7624474,
-                      "longitude": -73.83165
-                    }
-                  },
-                  "dropoff": {
-                    "name": "John F. Kennedy International Airport",
-                    "scheduled_arrival_at": "2017-04-15T07:03:00",
-                    "action": "dropoff",
-                    "address": {
-                      "state_code": "NY"
-                    },
-                    "flight": {
-                      "airport_code": "JFK",
-                      "airline_code": "AA",
-                      "flight_number": "9070",
-                      "tail_number": "A7-E3",
-                      "terminal": "4",
-                      "gateway": "A7",
-                      "meet_option": "curbside",
-                      "departs_from_or_arrives_to": "AUH",
-                      "departure_at_or_arrival_at": "2017-04-15T07:23:00"
-                    },
-                    "location": {
-                      "latitude": 40.63975,
-                      "longitude": -73.77892
-                    }
-                  },
-                  "primary_driver_id": 138,
-                  "primary_driver": {
-                    "first_name": "William",
-                    "last_name": "Vegas"
-                  },
-                  "primary_car_id": 75,
-                  "primary_car": {
-                    "license_plate": "LAL 44",
-                    "car_make": "Lincoln",
-                    "color": "BLACK"
-                  },
-                  "passenger_account_id": 1002334155,
-                  "passenger": {
-                    "first_name": "Issue",
-                    "last_name": "314",
-                    "email": "email@sample.com",
-                    "phone": "+380930000000"
-                  },
-                  "total_amount": 196.89,
-                  "payment_type_id": 1,
-                  "payment_type": {
-                    "name": "Credit Card",
-                    "method": "other"
-                  },
-                  "vehicle_type_id": 14421,
-                  "vehicle_type": {
-                    "name": "BMW"
-                  },
-                  "created_at": "2017-04-14T18:25:09",
-                  "created_by": "admin"
-                }
-              ]
-            }
-            
 ## Group Transitions by Reservation States
 
 Next endpoints allow transitioning by reservation states and managing reservation statuses for Operator and Driver flow. 
