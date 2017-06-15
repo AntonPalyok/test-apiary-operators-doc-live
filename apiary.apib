@@ -3994,3 +3994,34 @@ Returns Paged Collection of Customer Accounts.
   },
   "notes": "Some notes"
 }
+
+## Group Operator
+Provides operations with Operators.
+
+## Get Operator Profile [/GetOperatorProfile]
+Returns the profile of the current logged-in operator.
+
+### Get Profile [GET /operators/self/profile] 
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "username": "sample string 1",
+  "first_name": "sample string 2",
+  "last_name": "sample string 3",
+  "email": "sample string 4",
+  "phone": "sample string 5"
+}
