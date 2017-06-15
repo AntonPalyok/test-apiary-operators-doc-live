@@ -3161,9 +3161,10 @@ Provides operations with Customer Accounts.
 ## Search Customer Accounts [/GetCustomerAccountsAsync]
 Returns Paged Collection of Customer Accounts. 
 
-### Get Customer Accounts [GET /companies/{company_alias}/customers?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Customer Accounts [GET /companies/{company_alias}/customers?billing_contact_id={billing_contact_id}&search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + billing_contact_id: (optional, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3172,7 +3173,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3239,9 +3239,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Billing Contacts [GET /companies/{company_alias}/customers/billing_contacts?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Billing Contacts [GET /companies/{company_alias}/customers/billing_contacts?billing_contact_id={billing_contact_id}&search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + billing_contact_id: (optional, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3250,7 +3251,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3317,9 +3317,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Booking Contacts [GET /companies/{company_alias}/customers/booking_contacts?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Booking Contacts [GET /companies/{company_alias}/customers/booking_contacts?billing_contact_id={billing_contact_id}&search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + billing_contact_id: (optional, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3328,7 +3329,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3395,9 +3395,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Booking Contact's Passengers [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/passengers?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Booking Contact's Passengers [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/passengers?search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + booking_contact_id: (required, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3406,7 +3407,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3473,9 +3473,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Booking Contact's Billing Contacts [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/billing_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Booking Contact's Billing Contacts [GET /companies/{company_alias}/customers/booking_contacts/{booking_contact_id}/billing_contacts?search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + booking_contact_id: (required, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3484,7 +3485,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3551,9 +3551,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Passengers [GET /companies/{company_alias}/customers/passengers?billing_contact_id={billing_contact_id}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Passengers [GET /companies/{company_alias}/customers/passengers?billing_contact_id={billing_contact_id}&search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + billing_contact_id: (optional, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3562,7 +3563,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3629,9 +3629,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Passenger's Booking Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/booking_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Passenger's Booking Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/booking_contacts?search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + passenger_id: (required, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3640,7 +3641,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
@@ -3707,9 +3707,10 @@ Returns Paged Collection of Customer Accounts.
   ]
 }
 
-### Get Passenger's Billing Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/billing_contacts?search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}] 
+### Get Passenger's Billing Contacts [GET /companies/{company_alias}/customers/passengers/{passenger_id}/billing_contacts?search_in={search_in}&search_for={search_for}&page_index={page_index}&page_size={page_size}&is_active={is_active}&sort_by={sort_by}&sort_order={sort_order}] 
 
 + Parameters 
+    + company_alias: (required, string)
     + passenger_id: (required, int)
     + search_in: (optional, string)
     + search_for: (optional, string)
@@ -3718,7 +3719,6 @@ Returns Paged Collection of Customer Accounts.
     + is_active: true (optional, boolean)
     + sort_by: (optional, string)
     + sort_order: (optional, string)
-    + company_alias: (required, string)
 
 + Request 
 
