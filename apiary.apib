@@ -848,6 +848,237 @@ Use `search_for` parameter to filter results by POI Type name.
 
 {"total_count":2,"items":[{"id":1,"name":"sample string 1","is_active":true},{"id":2,"name":"sample string 2","is_active":true}]}
 
+## System Settings [/system-settings]
+
+System Settings specify operator requirements and allowed actions. For example, accepted payment methods or an allowed time range for booking modifications.
+
+It is recommended additional validation be done on the client side to avoid receiving a technical error message when an action is attempted which doesn't meet the requirements. For example, attempting to pay with credit card when it is not accepted.
+
+### Get [GET /companies/{company_alias}/settings/system]
+Returns Company System settings.
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "service_type_mapping":
+                {
+                    "default_hourly_service_type_id":1,
+                    "default_airport_departure_service_type_id":1,
+                    "default_airport_arrival_service_type_id":1,
+                    "default_point_to_point_service_type_id":1
+                },
+                "state_machine_mapping":
+                {
+                    "created_statuses":[1,2],
+                    "unassigned_statuses":[1,2],
+                    "offered_statuses":[1,2],
+                    "assigned_statuses":[1,2],
+                    "driver_is_on_the_way_statuses":[1,2],
+                    "driver_is_at_pickup_statuses":[1,2],
+                    "driver_is_circling_statuses":[1,2],
+                    "driving_passenger_statuses":[1,2],
+                    "driver_is_closing_job_statuses":[1,2],
+                    "closed_by_driver_statuses":[1,2],
+                    "cancelled_statuses":[1,2]
+                },
+                "vehicle_type_mapping":
+                {
+                    "hybrid_sedans":[1,2],
+                    "vip_sedans":[1,2],
+                    "sedans":[1,2],
+                    "economy_sedans":[1,2],
+                    "hybrid_suvs":[1,2],
+                    "vip_suvs":[1,2],
+                    "suvs":[1,2],
+                    "economy_suvs":[1,2],
+                    "mini_vans":[1,2],
+                    "other_vans":[1,2],
+                    "passenger_vans":[1,2],
+                    "limousines":[1,2],
+                    "mini_buses":[1,2],
+                    "party_buses":[1,2],
+                    "coach_buses":[1,2],
+                    "other_buses":[1,2],
+                    "shared_vehicles":[1,2],
+                    "other_vehicles":[1,2]
+                },
+                "rates_mapping":
+                {
+                    "base_charge":[1,2],
+                    "hourly_charge":[1,2],
+                    "passenger_charge":[1,2],
+                    "distance_charge":[1,2],
+                    "gratuity_charge":[1,2],
+                    "extra_gratuity":[1,2],
+                    "stops_charge":[1,2],
+                    "tolls":[1,2],
+                    "surcharges":[1,2],
+                    "parking":[1,2],
+                    "miscellaneous_charge":[1,2],
+                    "discount":[1,2],
+                    "taxes":[1,2]
+                },
+                "ores":
+                {
+                    "is_ores_enabled": true,
+                    "is_credit_card_required":true,
+                    "is_billing_address_required":true,
+                    "max_authentication_attempt_count":1,
+                    "default_payment_gateway_id":1,
+                    "payment_transaction_type":"authorization_and_capture",
+                    "default_rental_agreement_id":1,
+                    "allowed_payment_types":[1,2],
+                    "is_rate_calculation_enabled":true,
+                    "is_reservation_auto_approve_enabled":false,
+                    "is_create_account_allowed":true,
+                    "is_create_quote_allowed":true,
+                    "is_create_reservation_allowed":true,
+                    "create_reservation_allowed_up_to":1,
+                    "is_cancel_and_modify_reservation_allowed":true,
+                    "cancel_and_modify_reservation_allowed_up_to":1,
+                    "is_reservation_cut_off_enabled":true,
+                    "reservation_cut_off_for_customer_begins_at":"00:00:00",
+                    "reservation_cut_off_for_customer_ends_at":"00:30:00",
+                    "is_google_analytics_enabled":false,
+                    "google_analytics_ua_code":"UA-12345678-1",
+                },
+                "lanet":
+                {
+                    "is_active":true,
+                    "is_relationship_auto_accept_enabled":false,
+                    "is_realtime_updates_enabled":false
+                }
+            }
+
+
+## UI Settings [/ui-settings]
+
+UI Settings specify formats for resources to be displayed to the end user, such as dates and times. Developers should use these settings as a guide when building a customer facing application.
+
+### Get [GET /companies/{company_alias}/settings/ui]
+Returns operator's UI settings.
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "ores":
+                {
+                    "default_date_format": "MM/dd/yyyy",
+                    "default_time_format": "hh:mm tt",
+                    "default_date_time_format": "MM/dd/yyyy hh:mm tt",
+                    "is_quote_creation_enabled_if_rates_not_found": true,
+                    "is_booking_creation_enabled": true,
+                    "location_type_display_order":["airport","stored_address","address","poi","seaport","fbo"],
+                    "rate_lookup_display_type": "row",
+                    "message_on_missing_rate_result_for_return_trip": "sample string 1",
+                    "message_on_reservation_auto_approve_enabled": "sample string 2",
+                    "message_on_reservation_auto_approve_disabled": "sample string 3",
+                    "message_on_credit_card_required": "sample string 4",
+                    "message_on_reservation_cut_off_enabled": "sample string 5",
+                    "message_on_ores_disabled": "sample string 6",
+                    "is_rate_grouping_allowed": true,
+                    "is_dedicated_quote_link_enabled": true,
+                    "is_airport_instructions_visible": true,
+                    "is_flight_details_visible_on_drop_off": true,
+                    "is_child_seats_visible": true,
+                    "is_promotion_code_visible": true,
+                    "is_airport_pickup_options_visible": true,
+                    "design":
+                    {
+                        "primary_button_style": 
+                        {
+                            "background_color": 
+                            {
+                                "from_color": "#ffffff",
+                                "to_color": "#ffffff"
+                            },
+                            "border_color": "#ffffff",
+                            "text_color": "#000000"
+                        },
+                        "accent_button_style": 
+                        {
+                            "background_color": 
+                            {
+                                "from_color": "#ffffff",
+                                "to_color": "#ffffff"
+                            },
+                            "border_color": "#ffffff",
+                            "text_color": "#000000"
+                        },
+                        "warning_button_style": 
+                        {
+                            "background_color": 
+                            {
+                                "from_color": "#ffffff",
+                                "to_color": "#ffffff"
+                            },
+                            "border_color": "#ffffff",
+                            "text_color": "#000000"
+                        },
+                        "default_input_style": 
+                        {
+                            "button_color": 
+                            {
+                                "from_color": "#ffffff",
+                                "to_color": "#ffffff"
+                            },
+                            "border_color": "#ffffff",
+                            "placeholder_text_color": "#000000"
+                        },
+                        "top_menu_background_color": "#ffffff",
+                        "top_menu_border_color": "#ffffff",
+                        "step_wizard_bar_background_color": "#ffffff",
+                        "dash_line_color": "#ffffff",
+                        "dashboard_menu_text_color": "#000000",
+                        "text_color": "#000000",
+                        "background_color": "#ffffff"
+                    }
+                },
+                "ores_mobile": 
+                {
+                    "logotype_file_name": "sample string 1",
+                    "logotype_image": "http://webapihelppage2.com",
+                    "background_color": "#ffffff",
+                    "theme_color": "#ffffff",
+                    "attention_color": "#ffffff",
+                    "text_color": "#000000",
+                    "background_images_file_names": ["sample string 1","sample string 2"],
+                    "background_images": ["http://webapihelppage1.com","http://webapihelppage2.com"]
+                }
+            }
+
 
 ## Group Reservations
 
