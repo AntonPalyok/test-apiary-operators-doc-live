@@ -882,9 +882,9 @@ Use `search_for` parameter to filter results by POI Type name.
 
 ## System Settings [/system-settings]
 
-System Settings specify operator requirements and allowed actions. For example, accepted payment methods or an allowed time range for booking modifications.
+System settings represent configurable options which affect the system behavior. For instance, requirements to be met for booking new ride or sending reservation modifications.
 
-It is recommended additional validation be done on the client side to avoid receiving a technical error message when an action is attempted which doesn't meet the requirements. For example, attempting to pay with credit card when it is not accepted.
+Additional validation is recommended to be done on the client side to avoid receiving technical error messages in such case as attempting to pay without a credit card when the one is required.
 
 ### Get [GET /companies/{company_alias}/settings/system]
 Returns Company System settings.
@@ -1001,7 +1001,7 @@ Returns Company System settings.
 
 ## UI Settings [/ui-settings]
 
-UI Settings specify formats for resources to be displayed to the end user, such as dates and times. Developers should use these settings as a guide when building a customer facing application.
+UI System settings represent configurable options which affect the UI behavior. Developers should use these settings as a guide when building a customer-facing application.
 
 ### Get [GET /companies/{company_alias}/settings/ui]
 Returns operator's UI settings.
