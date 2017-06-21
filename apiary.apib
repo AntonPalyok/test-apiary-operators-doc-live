@@ -4257,3 +4257,62 @@ Returns Paged Collection of Customer Accounts.
   },
   "notes": "Some notes"
 }
+
+
+## Customer Account Addresses [/CustomerAccount/addresses]
+
+### Get Collection [GET /companies/{company_alias}/customers/{customer_id}/addresses/favorite?search_for={search_for}&page_index={page_index}&page_size={page_size}&type={type}] 
+Returns paged collection of Account's favorite Address.
+
++ Parameters 
+    + company_alias: (required, string)
+    + customer_id: (required, int)
+    + search_for: (optional, string)
+    + type: (optional, string)
+    + page_index: 1 (optional, int)
+    + page_size: 20 (optional, int)
+
++ Request
+
+    + `search_for` (String). Use for filter by Address components (name, country, city, zip etc.).
+    + `type` (String). Possible values: 'home', 'work', 'other'.
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{"total_count":2,"items":[{"id":1,"type":"home","address":{"name":"sample string 1","country_code":"sample string 2","state_code":"sample string 3","postal_code":"sample string 4","city":"sample string 5","address_line1":"sample string 6","address_line2":"sample string 7"},"location":{"latitude":1.1,"longitude":2.1}},{"id":1,"type":"work","address":{"name":"sample string 8","country_code":"sample string 9","state_code":"sample string 10","postal_code":"sample string 11","city":"sample string 12","address_line1":"sample string 13","address_line2":"sample string 14"},"location":{"latitude":1.1,"longitude":2.1}}]}
+
+### Get By Id [GET /companies/{company_alias}/customers/{customer_id}/addresses/favorite/{id}] 
+Returns Account favorite Address by specified Id.
+
++ Parameters 
+    + company_alias: (required, string)
+    + customer_id: (required, int).
+    + id: `1` (required, int).
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{"id":1,"type":"home","address":{"name":"sample string 1","country_code":"sample string 2","state_code":"sample string 3","postal_code":"sample string 4","city":"sample string 5","address_line1":"sample string 6","address_line2":"sample string 7"},"location":{"latitude":1.1,"longitude":2.1}}
