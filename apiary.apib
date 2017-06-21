@@ -228,6 +228,38 @@ The tables below describe all possible request/response parameters:
 
 In 'execution' console you can see request/response samples, data types and sizes of parameters
 
+
+## Group Current Operator
+Provides operations with current Operator.
+
+## Profile [/OperatorProfile]
+Returns the profile of the current logged-in operator.
+
+### Get Profile [GET /operators/self/profile] 
+
++ Request 
+
+    + Headers 
+
+            Content-Type: application/json 
+            Authorization: bearer {access_token}
+
++ Response 200 
+
+    + Headers 
+
+            Content-Type: application/json 
+
+    + Body 
+
+{
+  "username": "sample string 1",
+  "first_name": "sample string 2",
+  "last_name": "sample string 3",
+  "email": "sample string 4"
+}
+
+
 ## Group General Resources
 
 The resources in this section can be used to assist with populating form elements or using auto-complete functionality.
@@ -633,7 +665,7 @@ Use `search_for` parameter to filter results by airport Iata code or name.
 ## Airlines [/airlines]
 Provides read operations for Airlines.
 
-hange### Get By IATA code [GET /companies/{company_alias}/resources/airlines/{iata}] 
+### Get By IATA code [GET /companies/{company_alias}/resources/airlines/{iata}] 
 Returns Airline by IATA code.
 
 + Parameters 
@@ -4224,34 +4256,4 @@ Returns Paged Collection of Customer Accounts.
     "address_line2": "14 ste"
   },
   "notes": "Some notes"
-}
-
-## Group Operator
-Provides operations with Operators.
-
-## Get Operator Profile [/GetOperatorProfile]
-Returns the profile of the current logged-in operator.
-
-### Get Profile [GET /operators/self/profile] 
-
-+ Request 
-
-    + Headers 
-
-            Content-Type: application/json 
-            Authorization: bearer {access_token}
-
-+ Response 200 
-
-    + Headers 
-
-            Content-Type: application/json 
-
-    + Body 
-
-{
-  "username": "sample string 1",
-  "first_name": "sample string 2",
-  "last_name": "sample string 3",
-  "email": "sample string 4"
 }
