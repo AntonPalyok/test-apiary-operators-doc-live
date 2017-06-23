@@ -2657,7 +2657,23 @@ Creates credit card without assosiation with existing customer account.
 
     + Body 
 
-Failed to generate the sample for media type 'application/x-www-form-urlencoded'. Cannot use formatter 'TraceableFormFormatter' to write type 'CreditCardCreateDTO'.
+{
+  "card_number": "4111111111111111",
+  "holder_name": "Josh Smith",
+  "holder_type": "personal",
+  "expiration_year": 2017,
+  "expiration_month": 11,
+  "billing_address": {
+    "country_code": "US",
+    "state_code": "TX",
+    "postal_code": "12345",
+    "county": "County",
+    "city": "Dallas",
+    "address_line1": "12 Some Street",
+    "address_line2": "14 ste"
+  },
+  "notes": "Some notes"
+}
 
 + Response 200 
 
