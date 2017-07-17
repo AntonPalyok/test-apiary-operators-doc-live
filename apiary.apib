@@ -1111,6 +1111,702 @@ Returns operator's UI settings.
                 }
             }
 
+## Group Rate Lookup
+
+### Initial Reservation Charges [GET /companies/{company_alias}/rate_table/initial_charges] 
+Method allows to see set of calculated initial rates (using default active system rates values) and it's total.
+Returns response with collection of charges and it's total.
+Array of `charges[]` can be used as detailed charges breakdown for new reservation before price setupping on your UI.
+
+
++ Parameters
+    + `company_alias` (required, string) 
+
++ Request
+    + Headers 
+        Accept-Encoding: gzip 
+        Accept-Charset: utf-8 
+        Accept: application/json 
+        Authorization: bearer {access_token} 
+
++ Response 200 (application/json)
+    + Headers 
+        Content-Type: application/json; charset=utf-8 
+    + Body 
+        {
+            "charges": [
+             {
+                "rate_id": 1,
+                "name": "sample string 2",
+                "rate_type": "fixed",
+                "rate_group": "base_rate",
+                "is_vat_tax": true,
+                "is_primary": true,
+                "unit_value": 1.0,
+                "unit_count": 1.0,
+                "total_value": 5.0
+             }
+            ],
+            "total_amount": 1.0
+        } 
+
+### Rate Table [POST /companies/{company_alias}/rate_table]
+This method allows you to
+
+
++ Parameters
+    + `company_alias` (required, string) 
+
++ Request(application/json)
+    + `booking_contact_account_id` (optional, number) 
+        The value must be integer which is not less than 1. 
+    + `billing_contact_account_id` (optional, number) 
+        The value must be integer which is not less than 1. 
+    + `passenger_account_id` (optional, number) 
+        The value must be integer which is not less than 1. 
+    + `service_type_id` (optional, number) 
+        The value must be integer which is not less than 1. 
+    + `passenger_count` (required, number) 
+        The value must be integer which is not less than 1. 
+    + `luggage_count` (optional, number) 
+        + Default: `0` 
+        The value must be integer which is not less than 0. 
+    + `infant_child_seat_count` (optional, number) 
+        + Default: `0` 
+        The value must be integer which is not less than 0. 
+    + `booster_child_seat_count` (optional, number) 
+        + Default: `0` 
+        The value must be integer which is not less than 0. 
+    + `toddler_child_seat_count` (optional, number) 
+        + Default: `0` 
+        The value must be integer which is not less than 0. 
+    + `is_handicap_access_required` (optional, boolean) 
+        + Default: `False` 
+    + `vehicle_type_id` (optional, number) 
+        The value must be integer which is not less than 1. 
+    + `promotion_code` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `scheduled_pickup_at` (required, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `scheduled_duration` (optional, number) 
+        The value must be integer which is not less than 60. 
+    + `pickup.name` (optional, string) 
+        The value must be non-empty string with maximum length 500. 
+    + `pickup.scheduled_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `pickup.actual_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `pickup.action` (optional, enum[string]) 
+        + Members 
+            + `pickup` 
+            + `stop` 
+            + `dropoff` 
+    + `pickup.notes` (optional, string) 
+        The value must be non-empty string with maximum length 4000. 
+    + `pickup.one_line_address` (optional, string) 
+    + `pickup.address.country_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `pickup.address.state_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `pickup.address.postal_code` (optional, string) 
+        The value must be non-empty string with maximum length 15. 
+    + `pickup.address.county` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.address.city` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.address.address_line1` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.address.address_line2` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.flight.airport_code` (optional, string) 
+        The value must be string with valid airport IATA or ICAO code. 
+    + `pickup.flight.airline_code` (optional, string) 
+        The value must be string with valid airline IATA or ICAO code. 
+    + `pickup.flight.flight_number` (optional, string) 
+        The value must be string with flight number digits. 
+    + `pickup.flight.tail_number` (optional, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `pickup.flight.terminal` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `pickup.flight.gateway` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `pickup.flight.meet_option` (optional, enum[string]) 
+        + Members 
+            + `curbside` 
+            + `inside` 
+    + `pickup.flight.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.flight.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `pickup.cruise.seaport_code` (required, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `pickup.cruise.cruise_ship_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.cruise.cruise_line_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.cruise.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `pickup.cruise.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `pickup.location.latitude` (optional, number) 
+        + Default: `0` 
+    + `pickup.location.longitude` (optional, number) 
+        + Default: `0` 
+    + `stops[].name` (optional, string) 
+        The value must be non-empty string with maximum length 500. 
+    + `stops[].scheduled_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `stops[].actual_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `stops[].action` (optional, enum[string]) 
+        + Members 
+            + `pickup` 
+            + `stop` 
+            + `dropoff` 
+    + `stops[].notes` (optional, string) 
+        The value must be non-empty string with maximum length 4000. 
+    + `stops[].one_line_address` (optional, string) 
+    + `stops[].address.country_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `stops[].address.state_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `stops[].address.postal_code` (optional, string) 
+        The value must be non-empty string with maximum length 15. 
+    + `stops[].address.county` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].address.city` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].address.address_line1` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].address.address_line2` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].flight.airport_code` (optional, string) 
+        The value must be string with valid airport IATA or ICAO code. 
+    + `stops[].flight.airline_code` (optional, string) 
+        The value must be string with valid airline IATA or ICAO code. 
+    + `stops[].flight.flight_number` (optional, string) 
+        The value must be string with flight number digits. 
+    + `stops[].flight.tail_number` (optional, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `stops[].flight.terminal` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `stops[].flight.gateway` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `stops[].flight.meet_option` (optional, enum[string]) 
+        + Members 
+            + `curbside` 
+            + `inside` 
+    + `stops[].flight.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].flight.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `stops[].cruise.seaport_code` (required, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `stops[].cruise.cruise_ship_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].cruise.cruise_line_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].cruise.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `stops[].cruise.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `stops[].location.latitude` (optional, number) 
+        + Default: `0` 
+    + `stops[].location.longitude` (optional, number) 
+        + Default: `0` 
+    + `dropoff.name` (optional, string) 
+        The value must be non-empty string with maximum length 500. 
+    + `dropoff.scheduled_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `dropoff.actual_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `dropoff.action` (optional, enum[string]) 
+        + Members 
+            + `pickup` 
+            + `stop` 
+            + `dropoff` 
+    + `dropoff.notes` (optional, string) 
+        The value must be non-empty string with maximum length 4000. 
+    + `dropoff.one_line_address` (optional, string) 
+    + `dropoff.address.country_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `dropoff.address.state_code` (optional, string) 
+        The value must be non-empty string with maximum length 5. 
+    + `dropoff.address.postal_code` (optional, string) 
+        The value must be non-empty string with maximum length 15. 
+    + `dropoff.address.county` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.address.city` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.address.address_line1` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.address.address_line2` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.flight.airport_code` (optional, string) 
+        The value must be string with valid airport IATA or ICAO code. 
+    + `dropoff.flight.airline_code` (optional, string) 
+        The value must be string with valid airline IATA or ICAO code. 
+    + `dropoff.flight.flight_number` (optional, string) 
+        The value must be string with flight number digits. 
+    + `dropoff.flight.tail_number` (optional, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `dropoff.flight.terminal` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `dropoff.flight.gateway` (optional, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `dropoff.flight.meet_option` (optional, enum[string]) 
+        + Members 
+            + `curbside` 
+            + `inside` 
+    + `dropoff.flight.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.flight.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `dropoff.cruise.seaport_code` (required, string) 
+        The value must be non-empty string with maximum length 10. 
+    + `dropoff.cruise.cruise_ship_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.cruise.cruise_line_name` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.cruise.departs_from_or_arrives_to` (optional, string) 
+        The value must be non-empty string with maximum length 250. 
+    + `dropoff.cruise.departure_at_or_arrival_at` (optional, string) 
+        The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
+    + `dropoff.location.latitude` (optional, number) 
+        + Default: `0` 
+    + `dropoff.location.longitude` (optional, number) 
+        + Default: `0` 
+    + `charges[].rate_id` (optional, number) 
+        + Default: `0` 
+    + `charges[].name` (required, string) 
+        The value must be non-empty string with maximum length 50. 
+    + `charges[].rate_type` (optional, enum[string]) 
+        + Members 
+            + `fixed` 
+            + `percentage` 
+            + `multiplier` 
+    + `charges[].rate_group` (optional, enum[string]) 
+        + Members 
+            + `base_rate` 
+            + `gratuities` 
+            + `miscellaneous` 
+            + `taxes` 
+            + `surcharge1` 
+            + `surcharge2` 
+            + `surcharge3` 
+            + `surcharge4` 
+            + `surcharge5` 
+            + `discount1` 
+            + `discount2` 
+            + `discount3` 
+            + `discount4` 
+            + `discount5` 
+    + `charges[].is_vat_tax` (optional, boolean) 
+        + Default: `False` 
+    + `charges[].is_primary` (optional, boolean) 
+        + Default: `False` 
+    + `charges[].unit_value` (optional, number) 
+        The value must be non-negative decimal number. 
+    + `charges[].unit_count` (optional, number) 
+        The value must be non-negative decimal number. 
+    + `charges[].total_value` (optional, number) 
+        + Default: `0` 
+        The value must be non-negative decimal number. 
+    + Headers 
+        Accept-Encoding: gzip 
+        Accept-Charset: utf-8 
+        Accept: application/json 
+        Content-Type: application/json;charset=utf-8 
+        Authorization: bearer {access_token} 
+    + Body 
+        {
+          "booking_contact_account_id": 1,
+          "billing_contact_account_id": 1,
+          "passenger_account_id": 1,
+          "service_type_id": 1,
+          "passenger_count": 1,
+          "luggage_count": 2,
+          "infant_child_seat_count": 3,
+          "booster_child_seat_count": 4,
+          "toddler_child_seat_count": 5,
+          "is_handicap_access_required": true,
+          "vehicle_type_id": 1,
+          "promotion_code": "sample string 7",
+          "scheduled_pickup_at": "2017-07-17T14:49:41",
+          "scheduled_duration": 1,
+          "pickup": {
+            "name": "sample string 1",
+            "scheduled_arrival_at": "2017-07-17T14:49:41",
+            "actual_arrival_at": "2017-07-17T14:49:41",
+            "action": "pickup",
+            "notes": "sample string 2",
+            "one_line_address": "sample string 3",
+            "address": {
+              "country_code": "sample string 1",
+              "state_code": "sample string 2",
+              "postal_code": "sample string 3",
+              "county": "sample string 4",
+              "city": "sample string 5",
+              "address_line1": "sample string 6",
+              "address_line2": "sample string 7"
+            },
+            "flight": {
+              "airport_code": "sample string 1",
+              "airline_code": "sample string 2",
+              "flight_number": "sample string 3",
+              "tail_number": "sample string 4",
+              "terminal": "sample string 5",
+              "gateway": "sample string 6",
+              "meet_option": "curbside",
+              "departs_from_or_arrives_to": "sample string 7",
+              "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+            },
+            "cruise": {
+              "seaport_code": "sample string 1",
+              "cruise_ship_name": "sample string 2",
+              "cruise_line_name": "sample string 3",
+              "departs_from_or_arrives_to": "sample string 4",
+              "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+            },
+            "location": {
+              "latitude": 1.1,
+              "longitude": 2.1
+            }
+          },
+          "stops": [
+            {
+              "name": "sample string 1",
+              "scheduled_arrival_at": "2017-07-17T14:49:41",
+              "actual_arrival_at": "2017-07-17T14:49:41",
+              "action": "pickup",
+              "notes": "sample string 2",
+              "one_line_address": "sample string 3",
+              "address": {
+                "country_code": "sample string 1",
+                "state_code": "sample string 2",
+                "postal_code": "sample string 3",
+                "county": "sample string 4",
+                "city": "sample string 5",
+                "address_line1": "sample string 6",
+                "address_line2": "sample string 7"
+              },
+              "flight": {
+                "airport_code": "sample string 1",
+                "airline_code": "sample string 2",
+                "flight_number": "sample string 3",
+                "tail_number": "sample string 4",
+                "terminal": "sample string 5",
+                "gateway": "sample string 6",
+                "meet_option": "curbside",
+                "departs_from_or_arrives_to": "sample string 7",
+                "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+              },
+              "cruise": {
+                "seaport_code": "sample string 1",
+                "cruise_ship_name": "sample string 2",
+                "cruise_line_name": "sample string 3",
+                "departs_from_or_arrives_to": "sample string 4",
+                "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+              },
+              "location": {
+                "latitude": 1.1,
+                "longitude": 2.1
+              }
+            }
+          ],
+          "dropoff": {
+            "name": "sample string 1",
+            "scheduled_arrival_at": "2017-07-17T14:49:41",
+            "actual_arrival_at": "2017-07-17T14:49:41",
+            "action": "pickup",
+            "notes": "sample string 2",
+            "one_line_address": "sample string 3",
+            "address": {
+              "country_code": "sample string 1",
+              "state_code": "sample string 2",
+              "postal_code": "sample string 3",
+              "county": "sample string 4",
+              "city": "sample string 5",
+              "address_line1": "sample string 6",
+              "address_line2": "sample string 7"
+            },
+            "flight": {
+              "airport_code": "sample string 1",
+              "airline_code": "sample string 2",
+              "flight_number": "sample string 3",
+              "tail_number": "sample string 4",
+              "terminal": "sample string 5",
+              "gateway": "sample string 6",
+              "meet_option": "curbside",
+              "departs_from_or_arrives_to": "sample string 7",
+              "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+            },
+            "cruise": {
+              "seaport_code": "sample string 1",
+              "cruise_ship_name": "sample string 2",
+              "cruise_line_name": "sample string 3",
+              "departs_from_or_arrives_to": "sample string 4",
+              "departure_at_or_arrival_at": "2017-07-17T14:49:41"
+            },
+            "location": {
+              "latitude": 1.1,
+              "longitude": 2.1
+            }
+          },
+          "charges": [
+            {
+              "rate_id": 1,
+              "name": "sample string 2",
+              "rate_type": "fixed",
+              "rate_group": "base_rate",
+              "is_vat_tax": true,
+              "is_primary": true,
+              "unit_value": 1.0,
+              "unit_count": 1.0,
+              "total_value": 5.0
+            }
+          ]
+        } 
+
++ Response 200 (application/json)
+    + Headers 
+        Content-Type: application/json; charset=utf-8 
+    + Body 
+        {
+          "charges": [
+            {
+              "rate_id": 1,
+              "name": "sample string 2",
+              "rate_type": "fixed",
+              "rate_group": "base_rate",
+              "is_vat_tax": true,
+              "is_primary": true,
+              "unit_value": 1.0,
+              "unit_count": 1.0,
+              "total_value": 5.0
+            }
+          ],
+          "total_amount": 1.0,
+          "fixed_rates": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "hourly_rates": [
+            {
+              "applied_duration": "00:00:00.1234567",
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "distance_rates": [
+            {
+              "applied_distance": 1.0,
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "passenger_rates": [
+            {
+              "applied_passenger_count": 1,
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "customer_account_rates": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "mandatory_miscellaneous_fees": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "optional_miscellaneous_fees": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "promotion_rates": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ],
+          "promotion_discounts": [
+            {
+              "description": "sample string 1",
+              "vehicle_type": {
+                "id": 1,
+                "code": "sample string 2",
+                "name": "sample string 3"
+              },
+              "rewritten_charges": [
+                {
+                  "rate_id": 1,
+                  "name": "sample string 2",
+                  "rate_type": "fixed",
+                  "rate_group": "base_rate",
+                  "is_vat_tax": true,
+                  "is_primary": true,
+                  "unit_value": 1.0,
+                  "unit_count": 1.0,
+                  "total_value": 5.0
+                }
+              ],
+              "total_amount": 2.0
+            }
+          ]
+        } 
 
 ## Group Reservations
 
