@@ -1024,7 +1024,7 @@ Returns operator's UI settings.
 
     + Body
 
-            {
+          {
                 "ores":
                 {
                     "default_date_format": "MM/dd/yyyy",
@@ -1032,18 +1032,18 @@ Returns operator's UI settings.
                     "default_date_time_format": "MM/dd/yyyy hh:mm tt",
                     "is_quote_creation_enabled_if_rates_not_found": true,
                     "is_booking_creation_enabled": true,
-                    "location_type_display_order":["airport","stored_address","address","poi","seaport","fbo"],
+                    "location_type_display_order":["airport","stored_address","address",stored_poi,"poi","seaport","fbo"],
                     "rate_lookup_display_type": "row",
                     "message_on_missing_rate_result_for_return_trip": "sample string 1",
-                    "message_on_reservation_auto_approve_enabled": "sample string 2",
-                    "message_on_reservation_auto_approve_disabled": "sample string 3",
+                    "message_on_reservation_auto_accept_enabled": "sample string 2",
+                    "message_on_reservation_auto_accept_disabled": "sample string 3",
                     "message_on_credit_card_required": "sample string 4",
                     "message_on_reservation_cut_off_enabled": "sample string 5",
                     "message_on_ores_disabled": "sample string 6",
                     "is_rate_grouping_allowed": true,
                     "is_dedicated_quote_link_enabled": true,
                     "is_airport_instructions_visible": true,
-                    "is_flight_details_visible_on_drop_off": true,
+                    "is_flight_details_on_dropoff_location_visible": true,
                     "is_child_seats_visible": true,
                     "is_promotion_code_visible": true,
                     "is_airport_pickup_options_visible": true,
@@ -1100,13 +1100,11 @@ Returns operator's UI settings.
                 },
                 "ores_mobile": 
                 {
-                    "logotype_file_name": "sample string 1",
-                    "logotype_image": "http://webapihelppage2.com",
+                    "logotype": "http://webapihelppage2.com",
                     "background_color": "#ffffff",
                     "theme_color": "#ffffff",
                     "attention_color": "#ffffff",
                     "text_color": "#000000",
-                    "background_images_file_names": ["sample string 1","sample string 2"],
                     "background_images": ["http://webapihelppage1.com","http://webapihelppage2.com"]
                 }
             }
