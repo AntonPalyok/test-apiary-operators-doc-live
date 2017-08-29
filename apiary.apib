@@ -228,6 +228,52 @@ The tables below describe all possible request/response parameters:
 
 In 'execution' console you can see request/response samples, data types and sizes of parameters
 
+## Group Company information and settings
+
+### Get company information [GET /companies/{company_alias}/information] 
+Provides operation for obtaining CompanyInformation
++ Parameters
+    + `company_alias` (required, string) 
+
++ Request
+    + Headers 
+        Accept-Encoding: gzip 
+        Accept-Charset: utf-8 
+        Accept: application/json 
+        Authorization: bearer {access_token} 
+
++ Response 200 (application/json)
+    + Headers 
+        Content-Type: application/json; charset=utf-8 
+    + Body 
+        {
+            "contacts": {
+                "logotype": "http://somedomain.com/some_path/some_logotype.jpeg",
+                "company_name": "Some Company Name",
+                "address": {
+                    "country_code": "US",
+                    "state_code": "TX",
+                    "postal_code": "12345",
+                    "city": "Dallas",
+                    "address_line1": "123 Some street",
+                    "address_line2": "24 ap"
+                },
+                "location": {
+                    "latitude": 1.1,
+                    "longitude": 2.1
+                },
+                "business_number": "11234 5678 MM 087",
+                "is_business_number_visible": true,
+                "primary_phone": "+15417543010",
+                "secondary_phone": "+15417543010",
+                "fax": "+15417543010",
+                "general_email": "some_email.email.com",
+                "reservation_email": "some_email2.email.com",
+                "billing_email": "some_email3.email.com",
+                "quote_email": "some_email4.email.com",
+                "website_url": "https://somedomain.com/"
+            }
+        } 
 
 ## Group Current Operator
 Provides operations with current Operator.
