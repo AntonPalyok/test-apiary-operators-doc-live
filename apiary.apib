@@ -3561,18 +3561,17 @@ Returns collection of available triggers for Operator Reservation by specified I
             
 ## Do Transition [/companies/{company_alias}/reservations/{id}/{trigger}]
             
-### Offer [POST /companies/{company_alias}/reservations/{id}/offer]
+### Offer [POST /companies/{company_alias}/reservations/{id}/offer?status_id={status_id}&include_statuses={include_statuses}]
 
 Make new reservation offer 
 
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3589,18 +3588,17 @@ Make new reservation offer
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Accept [POST /companies/{company_alias}/reservations/{id}/accept]
+### Accept [POST /companies/{company_alias}/reservations/{id}/accept?status_id={status_id}&include_statuses={include_statuses}]
 
 Accept offered reservation
 
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3617,18 +3615,17 @@ Accept offered reservation
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Reject [POST /companies/{company_alias}/reservations/{id}/reject]
+### Reject [POST /companies/{company_alias}/reservations/{id}/reject?status_id={status_id}&include_statuses={include_statuses}]
 
 Reject offered reservation
 
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3645,18 +3642,17 @@ Reject offered reservation
             
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
 
-### Assign [POST /companies/{company_alias}/reservations/{id}/assign]
+### Assign [POST /companies/{company_alias}/reservations/{id}/assign?status_id={status_id}&include_statuses={include_statuses}]
 
 Assign reservation to driver
 
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3673,18 +3669,17 @@ Assign reservation to driver
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Unassign [POST /companies/{company_alias}/reservations/{id}/unassign]
+### Unassign [POST /companies/{company_alias}/reservations/{id}/unassign?status_id={status_id}&include_statuses={include_statuses}]
 
 Unassigns reservation from driver
 
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3701,19 +3696,18 @@ Unassigns reservation from driver
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
          
-### Go to Pickup [POST /companies/{company_alias}/reservations/{id}/go_to_pickup]
+### Go to Pickup [POST /companies/{company_alias}/reservations/{id}/go_to_pickup?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the driver is on the way to pickup location
 
 + Parameters
 
-    + company_alias: limotest1 (required, string)
+     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3730,17 +3724,18 @@ Shows that the driver is on the way to pickup location
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
          
-### Arrive at Pickup [POST /companies/{company_alias}/reservations/{id}/arrive_at_pickup]
+### Arrive at Pickup [POST /companies/{company_alias}/reservations/{id}/arrive_at_pickup?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the driver has arrived at pickup location
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3757,17 +3752,18 @@ Shows that the driver has arrived at pickup location
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
          
-### Circle [POST /companies/{company_alias}/reservations/{id}/circle]
+### Circle [POST /companies/{company_alias}/reservations/{id}/circle?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the driver is circling on pickup location
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3784,17 +3780,18 @@ Shows that the driver is circling on pickup location
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
          
-### Start Wait [POST /companies/{company_alias}/reservations/{id}/start_wait]
+### Start Wait [POST /companies/{company_alias}/reservations/{id}/start_wait?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the Driver started waiting for the passenger
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3811,17 +3808,18 @@ Shows that the Driver started waiting for the passenger
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
 
-### End Wait [POST /companies/{company_alias}/reservations/{id}/end_wait]
+### End Wait [POST /companies/{company_alias}/reservations/{id}/end_wait?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the Driver driver stopped waiting for the passenger.
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3838,17 +3836,18 @@ Shows that the Driver driver stopped waiting for the passenger.
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
 
-### PickUp Passenger [POST /companies/{company_alias}/reservations/{id}/pick_up_passenger]
+### PickUp Passenger [POST /companies/{company_alias}/reservations/{id}/pick_up_passenger?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the driver picked up the passenger
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3865,17 +3864,18 @@ Shows that the driver picked up the passenger
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
 
-### DropOff Passenger [POST /companies/{company_alias}/reservations/{id}/drop_off_passenger]
+### DropOff Passenger [POST /companies/{company_alias}/reservations/{id}/drop_off_passenger?status_id={status_id}&include_statuses={include_statuses}]
 
 Shows that the driver delivered the passenger to the destination
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3893,17 +3893,18 @@ Shows that the driver delivered the passenger to the destination
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
   
    
-### Restore [POST /companies/{company_alias}/reservations/{id}/restore]
+### Restore [POST /companies/{company_alias}/reservations/{id}/restore?status_id={status_id}&include_statuses={include_statuses}]
 
 Restore reservation after deleting 
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3920,17 +3921,18 @@ Restore reservation after deleting
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Cancel [POST /companies/{company_alias}/reservations/{id}/cancel]
+### Cancel [POST /companies/{company_alias}/reservations/{id}/cancel?status_id={status_id}&include_statuses={include_statuses}]
 
 Cancel reservation 
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3947,17 +3949,18 @@ Cancel reservation
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Cancel by Passenger [POST /companies/{company_alias}/reservations/{id}/cancel_by_passenger]
+### Cancel by Passenger [POST /companies/{company_alias}/reservations/{id}/cancel_by_passenger?status_id={status_id}&include_statuses={include_statuses}]
 
 Cancel reservation by passenger
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -3974,17 +3977,18 @@ Cancel reservation by passenger
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Cancel by Affiliate [POST /companies/{company_alias}/reservations/{id}/cancel_by_affiliate]
+### Cancel by Affiliate [POST /companies/{company_alias}/reservations/{id}/cancel_by_affiliate?status_id={status_id}&include_statuses={include_statuses}]
 
 Cancel reservation by affiliate
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -4001,17 +4005,18 @@ Cancel reservation by affiliate
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Close [POST /companies/{company_alias}/reservations/{id}/close]
+### Close [POST /companies/{company_alias}/reservations/{id}/close?status_id={status_id}&include_statuses={include_statuses}]
 
 Close reservation
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
-
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
+    
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -4028,17 +4033,18 @@ Close reservation
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
         
-### No Show [POST /companies/{company_alias}/reservations/{id}/no_show]
+### No Show [POST /companies/{company_alias}/reservations/{id}/no_show?status_id={status_id}&include_statuses={include_statuses}]
 
 Sets when passenger did not arrive to pickup location
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
@@ -4055,17 +4061,18 @@ Sets when passenger did not arrive to pickup location
 
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
-### Keep State [POST /companies/{company_alias}/reservations/{id}/keep_state]
+### Keep State [POST /companies/{company_alias}/reservations/{id}/keep_state?status_id={status_id}&include_statuses={include_statuses}]
 
 Change reservation status without changing reservation state  
 
 + Parameters
+
     + company_alias: limotest1 (required, string)
     + id: 1 (int, required)
+    + status_id: 1 (int, required)
+    + include_statuses: all (String, optional).
 
 + Request
-    + `status_id` (Int). Required. Inclusive between 1 and Int Max value.
-    + `include_statuses` (String). Possible values: 'mapped', 'unmapped', 'all', 'none'. Default value: 'none'.
 
     + Headers
 
