@@ -2652,6 +2652,13 @@ This method allows you to
             + `pickup`
             + `stop`
             + `dropoff`
+    + `pickup.type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `pickup.notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `pickup.one_line_address` (optional, string) 
     + `pickup.address` (required, object)
@@ -2695,6 +2702,13 @@ This method allows you to
             + `pickup`
             + `stop`
             + `dropoff`
+    + `stops[].type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `stops[].notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `stops[].one_line_address` (optional, string) 
     + `stops[].address` (required, object)
@@ -2738,6 +2752,13 @@ This method allows you to
             + `pickup` 
             + `stop` 
             + `dropoff` 
+    + `dropoff.type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `dropoff.notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `dropoff.one_line_address` (optional, string) 
     + `dropoff.address` (required, object)
@@ -2966,6 +2987,7 @@ This method allows you to
     "name": "John F. Kennedy International Airport",
     "scheduled_arrival_at": "2017-04-15T07:03:00",
     "action": "dropoff",
+    "type": "airport",
     "address": {
       "state_code": "NY"
     },
@@ -3201,6 +3223,7 @@ This method allows you to
     "name": "John F. Kennedy International Airport",
     "scheduled_arrival_at": "2017-04-15T07:03:00",
     "action": "dropoff",
+    "type": "airport",
     "address": {
       "state_code": "NY"
     },
@@ -3377,6 +3400,13 @@ This method allows you to
             + `pickup`
             + `stop`
             + `dropoff`
+    + `pickup.type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `pickup.notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `pickup.one_line_address` (optional, string) 
     + `pickup.address` (required, object)
@@ -3420,6 +3450,13 @@ This method allows you to
             + `pickup`
             + `stop`
             + `dropoff`
+    + `stops[].type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `stops[].notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `stops[].one_line_address` (optional, string) 
     + `stops[].address` (required, object)
@@ -3463,6 +3500,13 @@ This method allows you to
             + `pickup` 
             + `stop` 
             + `dropoff` 
+    + `dropoff.type` (optional, enum[string]) 
+        + Members
+            + `address`
+            + `poi`
+            + `fbo`
+            + `airport`
+            + `seaport`
     + `dropoff.notes` (optional, string) The value must be non-empty string with maximum length 4000. 
     + `dropoff.one_line_address` (optional, string) 
     + `dropoff.address` (required, object)
@@ -3691,6 +3735,7 @@ This method allows you to
     "name": "John F. Kennedy International Airport",
     "scheduled_arrival_at": "2017-04-15T07:03:00",
     "action": "dropoff",
+    "type": "airport",
     "address": {
       "state_code": "NY"
     },
