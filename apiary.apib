@@ -4311,7 +4311,35 @@ Returns collection of available triggers for Operator Reservation by specified I
             
 ### Offer [POST /companies/{company_alias}/reservations/{id}/offer?status_id={status_id}&include_statuses={include_statuses}]
 
-Make new reservation offer 
+Sends reservation offer to a driver
+
++ Parameters
+    + company_alias: limotest1 (required, string)
+    + id: 1 (int, required)
+    + status_id: 1 (int, optional)
+    + include_statuses: all (String, optional).
+
++ Request
+
+    + Headers
+
+            Content-Type: application/json
+            Authorization: bearer {access_token}
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json
+
+    + Body
+
+            {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
+
+            
+### Retract Offer [POST /companies/{company_alias}/reservations/{id}/retract_offer?status_id={status_id}&include_statuses={include_statuses}]
+
+Retracts reservation offer from a driver
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -4338,7 +4366,7 @@ Make new reservation offer
             
 ### Accept [POST /companies/{company_alias}/reservations/{id}/accept?status_id={status_id}&include_statuses={include_statuses}]
 
-Accept offered reservation
+Accepts offered/created reservation
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -4365,7 +4393,7 @@ Accept offered reservation
             
 ### Reject [POST /companies/{company_alias}/reservations/{id}/reject?status_id={status_id}&include_statuses={include_statuses}]
 
-Reject offered reservation
+Rejects offered/created reservation
 
 + Parameters
     + company_alias: limotest1 (required, string)
