@@ -3001,15 +3001,6 @@ This method allows you to
         The value must be integer which is not less than 1. 
     + `currency_code` (optional, string) 
         The value must be string with valid ISO 4217 currency alpha code. 
-    + `paid_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
-    + `authorized_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
-    + `total_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
     + `primary_agent_id` (optional, number) 
         The value must be integer which is not less than 1. 
     + `primary_agent_reward` (optional, object) 
@@ -3045,38 +3036,10 @@ This method allows you to
         The value must be integer which is not less than 1. 
     + `charges[].name` (required, string) 
         The value must be non-empty string with maximum length 50. 
-    + `charges[].rate_type` (optional, enum[string]) 
-        + Members 
-            + `fixed` 
-            + `percentage` 
-            + `multiplier` 
-    + `charges[].rate_group` (optional, enum[string]) 
-        + Members 
-            + `base_rate` 
-            + `gratuities` 
-            + `miscellaneous` 
-            + `taxes` 
-            + `surcharge1` 
-            + `surcharge2` 
-            + `surcharge3` 
-            + `surcharge4` 
-            + `surcharge5` 
-            + `discount1` 
-            + `discount2` 
-            + `discount3` 
-            + `discount4` 
-            + `discount5` 
-    + `charges[].is_vat_tax` (optional, boolean) 
-        + Default: `false` 
-    + `charges[].is_primary` (optional, boolean) 
-        + Default: `false` 
     + `charges[].unit_value` (optional, number) 
         The value must be non-negative decimal number. 
     + `charges[].unit_count` (optional, number) 
         The value must be non-negative decimal number. 
-    + `charges[].total_value` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
     + `preferred_vehicle_type_id` (optional, number) 
         The value must be integer which is not less than 1. 
     + `preferred_primary_driver_id` (optional, number) 
@@ -3229,9 +3192,6 @@ This method allows you to
   "credit_card_id": 7019493,
   "payment_type_id": 1,
   "currency_code": "USD",
-  "paid_amount": 0.0,
-  "authorized_amount": 0.0,
-  "total_amount": 196.89,
   "primary_agent_id": 2,
   "primary_agent_reward": {
     "type": "amout",
@@ -3251,13 +3211,8 @@ This method allows you to
     {
       "rate_id": 2,
       "name": "Per Hour",
-      "rate_type": "multiplier",
-      "rate_group": "base_rate",
-      "is_vat_tax": false,
-      "is_primary": true,
       "unit_value": 15.0,
-      "unit_count": 1.0,
-      "total_value": 15.0
+      "unit_count": 1.0
     }
   ],
   "preferred_vehicle_type_id": 49328,
@@ -3932,15 +3887,6 @@ This method allows you to
         The value must be integer which is not less than 1. 
     + `currency_code` (optional, string) 
         The value must be string with valid ISO 4217 currency alpha code. 
-    + `paid_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
-    + `authorized_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
-    + `total_amount` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
     + `primary_agent_id` (optional, number) 
         The value must be integer which is not less than 1. 
     + `primary_agent_reward` (optional, object) 
@@ -3976,38 +3922,10 @@ This method allows you to
         The value must be integer which is not less than 1. 
     + `charges[].name` (required, string) 
         The value must be non-empty string with maximum length 50. 
-    + `charges[].rate_type` (optional, enum[string]) 
-        + Members 
-            + `fixed` 
-            + `percentage` 
-            + `multiplier` 
-    + `charges[].rate_group` (optional, enum[string]) 
-        + Members 
-            + `base_rate` 
-            + `gratuities` 
-            + `miscellaneous` 
-            + `taxes` 
-            + `surcharge1` 
-            + `surcharge2` 
-            + `surcharge3` 
-            + `surcharge4` 
-            + `surcharge5` 
-            + `discount1` 
-            + `discount2` 
-            + `discount3` 
-            + `discount4` 
-            + `discount5` 
-    + `charges[].is_vat_tax` (optional, boolean) 
-        + Default: `false` 
-    + `charges[].is_primary` (optional, boolean) 
-        + Default: `false` 
     + `charges[].unit_value` (optional, number) 
         The value must be non-negative decimal number. 
     + `charges[].unit_count` (optional, number) 
         The value must be non-negative decimal number. 
-    + `charges[].total_value` (optional, number) 
-        The value must be non-negative decimal number. 
-        + Default: `0` 
     + `preferred_vehicle_type_id` (optional, number) 
         The value must be integer which is not less than 1. 
     + `preferred_primary_driver_id` (optional, number) 
@@ -4161,9 +4079,6 @@ This method allows you to
   "credit_card_id": 7019493,
   "payment_type_id": 1,
   "currency_code": "USD",
-  "paid_amount": 0.0,
-  "authorized_amount": 0.0,
-  "total_amount": 196.89,
   "primary_agent_id": 2,
   "primary_agent_reward": {
     "type": "amout",
@@ -4183,13 +4098,8 @@ This method allows you to
     {
       "rate_id": 2,
       "name": "Per Hour",
-      "rate_type": "multiplier",
-      "rate_group": "base_rate",
-      "is_vat_tax": false,
-      "is_primary": true,
       "unit_value": 15.0,
-      "unit_count": 1.0,
-      "total_value": 15.0
+      "unit_count": 1.0
     }
   ],
   "preferred_vehicle_type_id": 49328,
