@@ -43,20 +43,20 @@ Follow the below steps to complete some of the most popular actions.
 
 <b> Get Authorization to use the Operator API before doing anything else.</b>
 
-1. Contact api@limoanywhere.com and receive your Client Id & Client Secret.
-2. Use Client Id & Client Secret to generate an access token as described <a href="/#reference/authentication">here.</a>
+1. Contact api@limoanywhere.com and receive your Client ID & Client Secret.
+2. Use Client ID & Client Secret to generate an access token as described <a href="/#reference/authentication">here.</a>
 
 Once you have completed the above, choose a sub-section to follow:
 
 <b> Create a Booking</b>
 
 1. Call the <a href="/#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method to get the pricing for your trip requirements. Choose the optimal pricing and hold the `Id` of this rate from the `results` array.
-2. Use the <a href="/#reference/booking/booking/booking">Booking</a> method. In `search_result_id` parameter set the rate Id of the desired rate and provide additional necessary information: payment, passengers, optional rates etc.
+2. Use the <a href="/#reference/booking/booking/booking">Booking</a> method. In `search_result_id` parameter set the rate ID of the desired rate and provide additional necessary information: payment, passengers, optional rates etc.
 
 <b> Create a Quote</b>
 
 1. Call the <a href="/#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method to get the pricing for your trip requirements. Choose the optimal pricing and hold the `Id` of this rate from the `results` array.
-2. Use the <a href="/#reference/booking/rate-lookup/create-quote">Create Quote</a> method. In the `search_result_id` parameter, use the search result Id from the <a href="#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method and provide additional necessary information (same as the <a href="#reference/booking/booking/booking">Booking</a> process)
+2. Use the <a href="/#reference/booking/rate-lookup/create-quote">Create Quote</a> method. In the `search_result_id` parameter, use the search result ID from the <a href="#reference/booking/rate-lookup/rate-lookup">Rate Lookup</a> method and provide additional necessary information (same as the <a href="#reference/booking/booking/booking">Booking</a> process)
 
 
 
@@ -338,8 +338,8 @@ Returns a paged collection of Payment Types.
 
         { "total_count": 2, "items": [ { "id": 1, "name": "sample string 1", "type": "other", "isActive": true }, { "id": 2, "name": "sample string 2", "type": "other", "isActive":false } ] }        
 
-### Get By Id [GET /companies/{company_alias}/resources/payment_types/{id}]
-Returns the Payment Type by Id.
+### Get By ID [GET /companies/{company_alias}/resources/payment_types/{id}]
+Returns the Payment Type by ID.
 + Parameters
     + id: `1` (required, int)
     + company_alias: limotest1 (required, string)
@@ -385,8 +385,8 @@ Returns a paged collection of Payment Gateways.
     + Body
         {"total_count":2,"items":[{"id":1,"name":"sample string 1"},{"id":2,"name": "sample string 2"}]}
 
-### Get By Id [GET /companies/{company_alias}/resources/payment_gateways/{id}]
-Returns the Payment Gateway by Id.
+### Get By ID [GET /companies/{company_alias}/resources/payment_gateways/{id}]
+Returns the Payment Gateway by ID.
 + Parameters
     + company_alias: limotest1 (required, string)
     + id: `1` (required, int)
@@ -434,8 +434,8 @@ Returns a paged collection of Vehicle Types.
     + Body
             {"total_count":2,"items":[{"id":1,"images":["http://webapihelppage1.com","http://webapihelppage2.com"],"name":"sample string 1","passenger_capacity":1,"luggage_capacity": 1,"color":"#ee1d24","description":"sample string 2","is_handicap_accessible":true,"is_active":true,"is_visible":true},{"id":2,"images":["http://webapihelppage3.com","http://webapihelppage4.com"],"name": "sample string 3","passenger_capacity":1,"luggage_capacity":1,"color":"#ee1d24","description":"sample string 4","is_handicap_accessible":true,"is_active":true,"is_visible": true}]}
     
-### Get By Id [GET /companies/{company_alias}/resources/vehicle_types/{id}]
-Returns the Vehicle Type by Id
+### Get By ID [GET /companies/{company_alias}/resources/vehicle_types/{id}]
+Returns the Vehicle Type by ID
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -480,8 +480,8 @@ Returns a paged collection of Cars.
     + Body
             {"total_count":2,"items":[{"id": 1,"name": "sample string 1","vehicle_type_id": 4,"notes": "sample string 2","car_make": "sample string 3","car_model": "sample string 4","car_color": "sample string 5","color": "sample string 6","passenger_capacity": 5,"license_plate": "sample string 7","is_active": true,"cellular_phone": "sample string 8","cellular_phone_wireless_provider": "sample string 9"},{"id": 2,"name": "sample string 10","vehicle_type_id": 4,"notes": "sample string 11","car_make": "sample string 12","car_model": "sample string 13","car_color": "sample string 14","color": "sample string 15","passenger_capacity": 4,"license_plate": "sample string 16","is_active": true,"cellular_phone": "sample string 17","cellular_phone_wireless_provider": "sample string 18"}]}
     
-### Get By Id [GET /companies/{company_alias}/resources/cars/{id}]
-Returns the Car by Id
+### Get By ID [GET /companies/{company_alias}/resources/cars/{id}]
+Returns the Car by ID
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -527,8 +527,8 @@ Returns a paged collection of Drivers.
     + Body
            {"total_count":2,"items":[{"id": 1,"first_name":"sample string 1","last_name":"sample string 2","car_id":2,"portrait":"http://webapihelppage1.com","cellular_phone":"sample string 3","cellular_phone_wireless_provider":"sample string 4","notes":"sample string 5","is_active":true},{"id":3,"first_name":"sample string 6","last_name":"sample string 7","car_id": 4,"portrait":"http://webapihelppage2.com","cellular_phone":"sample string 8","cellular_phone_wireless_provider":"sample string 9","notes":"sample string 10","is_active":true}]}
     
-### Get By Id [GET /companies/{company_alias}/resources/drivers/{id}]
-Returns the Driver by Id
+### Get By ID [GET /companies/{company_alias}/resources/drivers/{id}]
+Returns the Driver by ID
 
 + Parameters
     + company_alias: limotest1 (required, string)
@@ -577,8 +577,8 @@ Returns a paged collection of Service Types.
 
             { "total_count": 2, "items": [ { "id"Typ: 1, "name": "Hourly/As Directed", "is_active": true }, { "id": 2, "name": "Airport Arrival", "is_active": true } ] }
 
-### Get By Id [GET /companies/{company_alias}/resources/service_types/{id}]
-Returns the Service Type by Id.
+### Get By ID [GET /companies/{company_alias}/resources/service_types/{id}]
+Returns the Service Type by ID.
 + Parameters
     + id: `1` (required, int)
 
@@ -840,8 +840,8 @@ Use `search_for` parameter to filter results by Airport Iata code or Airline Nam
 
 {"total_count":2,"items":[{"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 3","country_code":"sample string 4","state_code":"sample string 5","postal_code": "sample string 6","city":"sample string 7","address_line1":"sample string 8","address_line2":"sample string 9"},"location":{"latitude": 1.1,"longitude": 2.1},"is_active":true},{"airport_iata":"sample string 1","name":"sample string 2","phone":"sample string 3","instructions":"sample string 4","address":{"name":"sample string 12","country_code":"sample string 13","state_code":"sample string 14","postal_code":"sample string 15","city":"sample string 16","address_line1": "sample string 17","address_line2":"sample string 18"},"location":{"latitude":1.1,"longitude":2.1},"is_active":true}]}
 
-### Get By Id [GET /companies/{company_alias}/resources/fbos/{id}] 
-Returns Private Airline by Id.
+### Get By ID [GET /companies/{company_alias}/resources/fbos/{id}] 
+Returns Private Airline by ID.
  
 + Parameters
     + id: `1` (required, int)
@@ -2102,8 +2102,6 @@ This method allows you to
     "arranged_by": "INET",
     "voucher_number": "7789652"
   },
-  "confirmation_on_create": "email",
-  "confirmation_on_update": "email",
   "incoming_reference_number": "33467",
   "incoming_partner_reservation_id": 23423,
   "incoming_partner_reservation": {
@@ -3068,19 +3066,7 @@ This method allows you to
     + `miscellaneous.arranged_by` (optional, string) 
         The value must be non-empty string with maximum length 50. 
     + `miscellaneous.voucher_number` (optional, string) 
-        The value must be non-empty string with maximum length 50. 
-    + `confirmation_on_create` (optional, enum[string]) 
-        + Members 
-            + `email` 
-            + `none` 
-            + `fax` 
-            + `call_to_confirm` 
-    + `confirmation_on_update` (optional, enum[string]) 
-        + Members 
-            + `email` 
-            + `none` 
-            + `fax` 
-            + `call_to_confirm` 
+        The value must be non-empty string with maximum length 50.
     + `incoming_reference_number` (optional, string) 
         The value must be non-empty string with maximum length 50. 
     + `outgoing_reference_number` (optional, string) 
@@ -3234,8 +3220,6 @@ This method allows you to
     "arranged_by": "INET",
     "voucher_number": "7789652"
   },
-  "confirmation_on_create": "email",
-  "confirmation_on_update": "fax",
   "incoming_reference_number": "12345",
   "outgoing_reference_number": "23456"
 }
@@ -3473,8 +3457,6 @@ This method allows you to
     "arranged_by": "INET",
     "voucher_number": "7789652"
   },
-  "confirmation_on_create": "email",
-  "confirmation_on_update": "email",
   "incoming_reference_number": "33467",
   "incoming_partner_reservation_id": 23423,
   "incoming_partner_reservation": {
@@ -3930,19 +3912,7 @@ This method allows you to
     + `miscellaneous.arranged_by` (optional, string) 
         The value must be non-empty string with maximum length 50. 
     + `miscellaneous.voucher_number` (optional, string) 
-        The value must be non-empty string with maximum length 50. 
-    + `confirmation_on_create` (optional, enum[string]) 
-        + Members 
-            + `email` 
-            + `none` 
-            + `fax` 
-            + `call_to_confirm` 
-    + `confirmation_on_update` (optional, enum[string]) 
-        + Members 
-            + `email` 
-            + `none` 
-            + `fax` 
-            + `call_to_confirm` 
+        The value must be non-empty string with maximum length 50.
     + `incoming_reference_number` (optional, string) 
         The value must be non-empty string with maximum length 50. 
     + `outgoing_reference_number` (optional, string) 
@@ -4097,8 +4067,6 @@ This method allows you to
     "arranged_by": "INET",
     "voucher_number": "7789652"
   },
-  "confirmation_on_create": "email",
-  "confirmation_on_update": "fax",
   "incoming_reference_number": "12345",
   "outgoing_reference_number": "23456"
 }
@@ -4949,7 +4917,7 @@ Provides operations with Customer Accounts.
 
 ## Get Customer Account [/GetCustomerAccountAsync]
 
-### Get By Id [GET /companies/{company_alias}/customers/{id}] 
+### Get By ID [GET /companies/{company_alias}/customers/{id}] 
 
 + Parameters 
     + id: `1` (required, int)
@@ -5931,8 +5899,8 @@ Returns paged collection of Account's favorite Address.
 
 {"total_count":2,"items":[{"id":1,"type":"home","address":{"name":"sample string 1","country_code":"sample string 2","state_code":"sample string 3","postal_code":"sample string 4","city":"sample string 5","address_line1":"sample string 6","address_line2":"sample string 7"},"location":{"latitude":1.1,"longitude":2.1}},{"id":1,"type":"work","address":{"name":"sample string 8","country_code":"sample string 9","state_code":"sample string 10","postal_code":"sample string 11","city":"sample string 12","address_line1":"sample string 13","address_line2":"sample string 14"},"location":{"latitude":1.1,"longitude":2.1}}]}
 
-### Get By Id [GET /companies/{company_alias}/customers/{customer_id}/addresses/favorite/{id}] 
-Returns Account favorite Address by specified Id.
+### Get By ID [GET /companies/{company_alias}/customers/{customer_id}/addresses/favorite/{id}] 
+Returns Account favorite Address by specified ID.
 
 + Parameters 
     + company_alias: (required, string)
