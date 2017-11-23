@@ -3765,7 +3765,7 @@ This method allows you to
         The value must be the string with date&time in ISO 8601 format between '1753-01-01T00:00:00' and '9999-12-31T23:59:59'.
     + `scheduled_duration_in_minutes` (optional, number) 
         The value must be integer which is not less than 1. 
-    + `payment_terms` (optional, enum[string]) 
+    + `moved ` (optional, enum[string]) 
         + Members 
             + `due_upon_receipt` 
             + `net10_days` 
@@ -4975,7 +4975,6 @@ Provides operations with Customer Accounts.
         + Default: `false` 
     + `default_payment_type_id` (optional, number) 
         The value must be integer which is not less than 1. 
-    + `payment_terms` (optional, string) 
     + `internal_notes` (optional, string) 
     + `preferences_notes` (optional, string) 
     + `driver_notes` (optional, string) 
@@ -5040,7 +5039,6 @@ Provides operations with Customer Accounts.
             "is_active": true,
             "is_locked": false,
             "default_payment_type_id": 1,
-            "payment_terms": "10.00:00:00",
             "internal_notes": "sample notes",
             "preferences_notes": "sample notes",
             "driver_notes": "sample notes",
@@ -5118,7 +5116,6 @@ Provides operations with Customer Accounts.
               "code": "CC",
               "method": "other"
             },
-            "payment_terms": "10.00:00:00",
             "internal_notes": "sample notes",
             "preferences_notes": "sample notes",
             "driver_notes": "sample notes",
@@ -5226,7 +5223,6 @@ Provides operations with Customer Accounts.
     "code": "CC",
     "method": "other"
   },
-  "payment_terms": "10.00:00:00",
   "internal_notes": "sample notes",
   "preferences_notes": "sample notes",
   "driver_notes": "sample notes",
