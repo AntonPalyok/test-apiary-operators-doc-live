@@ -4918,6 +4918,7 @@ Provides operations with Customer Accounts.
 ## Create Customer Account [/create_customer_account]
 
 ### Create [POST /companies/{company_alias}/customers]
+
 + Parameters
     + `company_alias` (required, string) 
 
@@ -4972,8 +4973,6 @@ Provides operations with Customer Accounts.
         + Default: `false` 
     + `is_passenger` (optional, boolean) 
         + Default: `false` 
-    + `default_credit_card_id` (optional, number) 
-        The value must be integer which is not less than 1. 
     + `default_payment_type_id` (optional, number) 
         The value must be integer which is not less than 1. 
     + `payment_terms` (optional, string) 
@@ -5002,12 +5001,14 @@ Provides operations with Customer Accounts.
     + `default_secondary_agent_reward.amount` (optional, number) 
         The value must be non-negative decimal number. 
         + Default: `0` 
+        
     + Headers 
         Accept-Encoding: gzip 
         Accept-Charset: utf-8 
         Accept: application/json 
         Content-Type: application/json;charset=utf-8 
         Authorization: bearer {access_token} 
+        
     + Body 
         {
             "email": "email@sample.com",
@@ -5056,9 +5057,24 @@ Provides operations with Customer Accounts.
             }
         } 
 
+
++ Response 409 (application/json)
+    The conflict occurs when a client application attempts to create new customer account using login email (`email` field) which is used by another account. A client application can use `reason_phrase` field value to determine occurred conflict and provide an error message for end-user. A client application should not use `message` field as error message for end-user.
+  description.
+    + Headers 
+            Content-Type: application/json 
+
+    + Body 
+{
+    "reason_phrase": "Account Email Conflict",
+    "message": "Specified email is used by another account.",
+    "correlation_id": "57f43b6ff94a4fe08d3d7d503b340695"
+}
+
 + Response 200 (application/json)
     + Headers 
         Content-Type: application/json; charset=utf-8 
+        
     + Body 
         {
             "id": 1,
@@ -5149,7 +5165,7 @@ Provides operations with Customer Accounts.
             Content-Type: application/json 
             Authorization: bearer {access_token}
 
-+ Response 200 
++ Response 200 (application/json)
 
     + Headers 
 
@@ -5265,18 +5281,14 @@ Returns Paged Collection of Customer Accounts.
 + Request 
 
     + Headers 
-
             Content-Type: application/json 
             Authorization: bearer {access_token}
-
 + Response 200 
 
     + Headers 
-
             Content-Type: application/json 
 
     + Body 
-
 {
   "total_count": 1,
   "items": [
@@ -5343,14 +5355,12 @@ Returns Paged Collection of Customer Accounts.
 + Request 
 
     + Headers 
-
             Content-Type: application/json 
             Authorization: bearer {access_token}
 
 + Response 200 
 
     + Headers 
-
             Content-Type: application/json 
 
     + Body 
