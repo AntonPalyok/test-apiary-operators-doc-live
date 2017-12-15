@@ -6122,8 +6122,8 @@ The tables below describes all possible request/response parameters for the Subs
 
 | Name | Type | Required | Description |
 |-----------------------------------------------|-----------|--------|--------------------------------------------------------------------------------------|
-| url | string | Yes | The endpoint the notification will be sent to |
-| events | object | Yes | List of evens to subscribe on |
+| url | string | Yes | Notification will be sent to this endpoint |
+| events | object | Yes | List of events to subscribe on |
 
 Check the table of supported `events`:
 
@@ -6132,9 +6132,9 @@ Check the table of supported `events`:
 | reservation.created | New reservation was created. |
 | reservation.updated | Reservation was updated. |
 | reservation.rejected | Executor rejected the reservation. After this event, any processing of reservation will be suppressed. |
-| reservation.unassigned | Driver has been unassigned from the reservation. After this event previously accepted driver and car infomation information became not actual. |
-| reservation.driver_is_on_the_way | Driver is on the way to pick-up location. Payload of webhook for this event may contains driver and car information. |
-| reservation.driver_is_at_pickup | Driver has arrived at the pick-up location. Payload of webhook for this event may contains driver and car information. |
+| reservation.unassigned | Driver has been unassigned from the reservation. After this event previously accepted driver and car information becomes irrelevant. |
+| reservation.driver_is_on_the_way | Driver is on the way to pick-up location. Payload of webhook for this event may contain driver and car information. |
+| reservation.driver_is_at_pickup | Driver has arrived at the pick-up location. Payload of webhook for this event may contain driver and car information. |
 | reservation.driver_is_waiting_for_passenger_started | Driver has started waiting for passenger at current location (additional fee may be include in final chargesd). |
 | reservation.driver_is_waiting_for_passenger_stopped | Driver has stopped waiting for passenger at current location. |
 | reservation.passenger_in_car | Passenger has been picked up. |
@@ -6142,7 +6142,7 @@ Check the table of supported `events`:
 | reservation.cancelled | Reservation has been cancelled. |
 | reservation.closed | Reservatoin has been closed. Payload for this event will contain final charges. After this event, any processing of reservation will be suppressed. |
 
-The list of events may be extended in the future.
+The list of events may be extended in  WebHooksfuture.
 
 The response the same as in <a href="#reference/reservations/get-reservations/get-reservation">Get Reservation</a> request.
 
