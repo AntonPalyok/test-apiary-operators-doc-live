@@ -6115,7 +6115,7 @@ Returns Account favorite Address by specified ID.
 Operator's app can subscribe to receive notifications about reservation events via <a href="#reference/notification-subscriptions/web-hook">Web Hooks</a>.
 
 
-The tables below describes all possible request/response parameters for the Subscription process methods:
+Table below describes all possible request/response parameters for the Subscription process methods:
 
 
 #### *Create Web Hook Subscription* request parameters
@@ -6131,24 +6131,24 @@ Check the table of supported `events`:
 |---------------------|----------------------------------------|
 | reservation.created | New reservation was created. |
 | reservation.updated | Reservation was updated. |
-| reservation.rejected | Executor rejected the reservation. After this event, any processing of reservation will be suppressed. |
+| reservation.rejected | Executor rejected the reservation. After this event any processing of reservation will be suppressed. |
 | reservation.unassigned | Driver has been unassigned from the reservation. After this event previously accepted driver and car information becomes irrelevant. |
 | reservation.driver_is_on_the_way | Driver is on the way to pick-up location. Payload of webhook for this event may contain driver and car information. |
 | reservation.driver_is_at_pickup | Driver has arrived at the pick-up location. Payload of webhook for this event may contain driver and car information. |
-| reservation.driver_is_waiting_for_passenger_started | Driver has started waiting for passenger at current location (additional fee may be include in final chargesd). |
+| reservation.driver_is_waiting_for_passenger_started | Driver has started waiting for passenger at current location (additional fee may be included in final charges). |
 | reservation.driver_is_waiting_for_passenger_stopped | Driver has stopped waiting for passenger at current location. |
 | reservation.passenger_in_car | Passenger has been picked up. |
 | reservation.passenger_dropped_off | Passenger has been dropped off. |
 | reservation.cancelled | Reservation has been cancelled. |
-| reservation.closed | Reservatoin has been closed. Payload for this event will contain final charges. After this event, any processing of reservation will be suppressed. |
+| reservation.closed | Reservation has been closed. Payload for this event will contain final charges. After this event any processing of reservation will be suppressed. |
 
-The list of events may be extended in  WebHooksfuture.
+The list of events may be extended in future.
 
-The response the same as in <a href="#reference/reservations/get-reservations/get-reservation">Get Reservation</a> request.
+The response is the same as in <a href="#reference/reservations/get-reservations/get-reservation">Get Reservation</a> request.
 
 ## Web Hook [/Web Hook]
 
-To subscribe you need to specify the list of events and the url you would want to receive notifications on.
+To subscribe you need to specify the list of events and the url you would want to receive notifications to.
 
 ### Create Or Update [PUT /operators/self/subscriptions/webhook]
 Allows you to specify the list of events you want to subscribe to.
