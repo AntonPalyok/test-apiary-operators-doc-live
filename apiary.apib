@@ -551,11 +551,10 @@ Returns the Driver by ID
 ## Service Types [/service_types]
 The available Service Types for company.
 
-### Get Collection [GET /companies/{company_alias}/resources/service_types?is_active={is_active}&page_index={page_index}&page_size={page_size}]
+### Get Collection [GET /companies/{company_alias}/resources/service_types?page_index={page_index}&page_size={page_size}]
 Returns a paged collection of Service Types. 
 
 + Parameters
-    + is_active: true (optional, boolean)
     + page_index: 1 (optional, int) 
     + page_size: 20 (optional, int)
     + company_alias: limotest1 (required, string)
