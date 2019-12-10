@@ -4720,33 +4720,7 @@ Shows that the driver delivered the passenger to the destination
             {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
   
    
-### Restore [POST /companies/{company_alias}/reservations/{id}/restore?status_id={status_id}&include_statuses={include_statuses}]
 
-Restore reservation after deleting 
-
-+ Parameters
-
-    + company_alias: limotest1 (required, string)
-    + id: 1 (int, required)
-    + status_id: 1 (int, optional)
-    + include_statuses: all (String, optional).
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/json
-            Authorization: bearer {access_token}
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json
-
-    + Body
-
-            {"state":"sample string 1","transitions":[{"state":"sample string 2","transition":"sample string 3","statuses":[{"id": 1,"name": "sample string 5","color":"sample string 6"},{"id": 2,"name":"sample string 7","color":"sample string 7" }]},{"state":"sample string 8","transition":"sample string 9","statuses":[{"id":3,"name":"sample string 10","color":"sample string 11"},{"id":4,"name":"sample string 12","color":"sample string 13"}]}]}
             
 ### Cancel [POST /companies/{company_alias}/reservations/{id}/cancel?status_id={status_id}&include_statuses={include_statuses}]
 
